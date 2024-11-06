@@ -1,10 +1,11 @@
 # config.sh
 CONFIGS=(
-    "raycast            ~/.config/raycast"
     "nvim               ~/.config/nvim"
     "yabai              ~/.config/yabai"
+    "raycast            ~/.config/raycast"
     "wezterm            ~/.config/wezterm"
     "iterm2             ~/.config/iterm2"
+    "karabiner          ~/.config/karabiner"
     "sketchybar         ~/.config/sketchybar"
     "tmux               ~/.config/tmux"
     "lazygit            ~/.config/lazygit"
