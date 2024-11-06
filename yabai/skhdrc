@@ -1,0 +1,20 @@
+# 
+# 注意：该文件不会生效，仅供预览，快捷键配置使用 Karabiner-Elements 来实现
+#
+# 如果你想使用该配置文件，请将其复制到 ~/.skhdrc
+
+# 窗口聚焦
+ctrl + shift + alt - h : yabai -m window --focus west
+ctrl + shift + alt - j : yabai -m window --focus south
+ctrl + shift + alt - k : yabai -m window --focus north
+ctrl + shift + alt - l : yabai -m window --focus east
+ctrl + shift + alt - g : yabai -m window --focus recent
+
+# 窗口移动
+ctrl + shift + alt - w : yabai -m window --warp north
+ctrl + shift + alt - a : yabai -m window --warp west
+ctrl + shift + alt - h : yabai -m window --warp south
+ctrl + shift + alt - h : yabai -m window --warp east
+
+# 切换浮窗模式
+ctrl + shift + alt - m : yabai -m window --toggle float; \ yabai -m window --toggle border

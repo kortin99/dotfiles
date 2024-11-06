@@ -1,0 +1,320 @@
+#!/usr/bin/env sh
+
+# 如果没有关闭 Mac 的 SIP，那么在 BigSur 及以上的系统中，更改配置文件后，需要手动加载过配置文件
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+# 如果已经关闭 Mac 的 SIP，那么通过下面命令就可以让 yabai 的配置文件热更新了
+# 也可以在该配置文件中增加这句，这样每次重启系统时不用自己输入
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# ------------------------------------------------------ #
+# ------------------- 全 局 变 量----------------------- #
+# ------------------------------------------------------ #
+
+# 脚本文件的路径
+scripts_path="${HOME}/.config/yabai/scripts"
+
+# 获取当前桌面数量
+space_count=$(yabai -m query --spaces | jq '. | length')
+
+# 获取当前桌面模式
+get_display_mode() {
+    # 获取显示器数量
+    display_info=$(yabai -m query --displays)
+    display_count=$(yabai -m query --displays | jq -r 'length')
+
+    if [ "$display_count" -eq 1 ]; then
+        echo 'mac'
+        return
+    fi
+
+    # 如果有两个显示屏
+    if [ "$display_count" -eq 2 ]; then
+        for ((i=0; i<$display_count; i++)); do
+            frame_w=$(yabai -m query --displays | jq -r ".[$i].frame.w")
+            frame_h=$(yabai -m query --displays | jq -r ".[$i].frame.h")
+
+            # 若其中一个是 1080P 的竖屏，那么表示我在公司
+            if [ "$frame_w" = "1080.0000" ] && [ "$frame_h" = "1920.0000" ]; then
+                echo 'company'
+                return
+            fi
+
+            # 若其中一个是 2K 的显示屏，那么表示我在家里
+            if [ "$frame_w" = "2560.0000" ] && [ "$frame_h" = "1440.0000" ]; then
+                echo 'home'
+                return
+            fi
+        done
+    fi
+
+    echo 'other'
+}
+
+display_mode=$(get_display_mode)
+
+# ------------------------------------------------------ #
+# ------------------- 全 局 配 置 ---------------------- #
+# ------------------------------------------------------ #
+
+# 窗口管理模式
+# - bsp: 平铺(默认)
+# - stack: 堆叠
+# - float: 浮动
+yabai -m config layout bsp
+
+# 在多显示器情况下，新建的窗口默认在**哪个显示器**出现
+# - default: 在创建窗口的显示器出现（mac 的默认行为）
+# - focused: 在当前聚焦的显示器出现
+# - cursor: 在鼠标指针所在的显示器出现
+yabai -m config window_origin_display cursor
+
+# 当前屏幕下，新窗口的出现在**屏幕的哪个位置**
+# - first_child: （父节点模式）如果当前是 vertical split，则出现在*左侧*；如果是 horizontal split，则出现在*上方*
+# - second_child: （子节点模式）如果当前是 vertical split，则出现在*右侧*；如果是 horizontal split，则出现在*下方*
+yabai -m config window_placement second_child
+
+# 窗口阴影值
+# - on: 总是展示
+# - off: 总是关闭
+# - float: 只有浮动窗口展示
+yabai -m config window_shadow on
+
+# 窗口不透明
+# - on: 总是展示
+# - off: 总是关闭
+yabai -m config window_opacity on
+# *激活*窗口的不透明度（仅当 window_opacity on 时才有效）
+yabai -m config active_window_opacity 1.0
+# *普通*窗口不透明度（仅当 window_opacity on 时才有效）
+yabai -m config normal_window_opacity 0.90
+# 激活窗口和普通窗口切换时，*不透明度的过渡时间*（仅当 window_opacity on 时才有效）
+yabai -m config window_opacity_duration 0.14
+
+yabai -m config insert_feedback_color 0xffd75f5f
+
+# 动画
+yabai -m config window_animation_duration 0.1
+
+# 所有窗口都使用相同比例的空间
+# - on: 总是开启
+# - off: 总是关闭
+yabai -m config auto_balance on
+
+# 分屏后*旧:新*窗口的比例（仅当 auto_balance off 时有效）
+yabai -m config split_ratio 0.50
+
+# 配合 sketchyBar 给底部让出空间
+yabai -m config external_bar all:40:0
+
+# ------------------------------------------------------ #
+# ------------------- 鼠标相关 ------------------------- #
+# ------------------------------------------------------ #
+
+# 窗口切换时，鼠标自动移动到当前使用窗口的中心
+# - on: 总是开启
+# - off: 总是关闭
+yabai -m config mouse_follows_focus off
+
+# 是否自动聚焦到鼠标所在窗口
+# - off: 总是关闭
+# - autoraise: 自动聚焦到鼠标所在窗口, 并且激活窗口
+# - autofocus: 自动聚焦到鼠标所在窗口
+yabai -m config focus_follows_mouse off
+
+# 按住对应修饰键时，yabai 不自动调整平铺（默认情况下调整窗口大小时，yabai 会自适应调整平铺）；配置时通常会关闭 focus_follows_mouse
+# - cmd
+# - alt
+# - shift
+# - ctrl
+# - fn
+yabai -m config mouse_modifier shift
+
+# modifier + 左键的行为
+# - move
+# - resize
+yabai -m config mouse_action1 move
+
+# modifier + 右键的行为
+# - move
+# - resize
+yabai -m config mouse_action2 resize
+
+# 在平铺管理情况下，拖动一个窗口到另一窗口位置时的操作
+# - swap: 交换窗口位置
+# - stack: 堆叠在旧窗口上
+yabai -m config mouse_drop_action swap
+
+# ----------------------------------------------------------- #
+# --------------- General Space Settings -------------------- #
+# ----------------------------------------------------------- #
+
+# 窗口和屏幕边缘的距离（优先级低于 gap）
+yabai -m config top_padding 30
+yabai -m config bottom_padding 30
+yabai -m config left_padding 30
+yabai -m config right_padding 30
+
+# 窗口与窗口之间的间距（优先级高于 padding）
+yabai -m config window_gap 8
+
+# ------------------------------------------------------------ #
+# ------------------- Specific Apps -------------------------- #
+# ------------------------------------------------------------ #
+
+# manage: 是否使用 yabai 管理
+# - on
+# - off
+# sticky: 是否总是置顶
+# - on
+# - off
+# sub-layer:
+# - below
+# - normal
+# - above
+
+# 浮动窗口
+# manage_off_apps='^(系统偏好设置|System Preferences|预览|Preview|universalAccessAuthWarn|System Information|活动监视器|Activity Monitor)$'
+# yabai -m rule --add manage=off app="${manage_off_apps}"
+
+manage_off_apps=(
+    "^(系统设置|System Settings)$"
+    "^(系统偏好设置|System Preferences)$"
+    "^System Information$"
+    "^(活动监视器|Activity Monitor)$"
+    "^(预览|Previewr)$"
+    "^(Finder|访达)$"
+    "^Alfred Preferences$"
+    "^飞书$"
+    "^Feishu$"
+    "^Lark$"
+    "^Lark Meetings$"
+    "^Seal$"
+    "^Karabiner-Elements$"
+    "^Karabiner-EventViewer$"
+    "^Things$"
+    "^Bartender 4$"
+    "^微信$"
+    "^Clash Verge$"
+    "同程管家"
+    "^NotchDrop$"
+    "Hammerspoon"
+    "Updating iTerm2"
+    "Tencent Lemon"
+    "Raycast"
+)
+
+for app in "${manage_off_apps[@]}"; do
+    yabai -m rule --add app="${app}" manage=off sticky=off
+done
+
+yabai -m rule --add app="^(universalAccessAuthWarn)$" sticky=on
+yabai -m rule --add app="^(预览|Preview)$" sticky=on
+
+# Arc 浏览器的设置窗口悬浮
+arc_browser_settins_titles=(
+    "^LadenxxxxD$"
+    "^General$"
+    "^Profiles$"
+    "^Max$"
+    "^Links$"
+    "^Shortcuts$"
+    "^Confirm access$" # bitwarden 的权限确认窗口
+)
+
+for title in "${arc_browser_settins_titles[@]}"; do
+    yabai -m rule --add app="^Arc$" title="${title}" manage=off 
+done
+yabai -m rule --add app="^Arc$" title="^Confirm access$" manage=off 
+
+# QSpace 的设置窗口悬浮
+qspace_file_browser_settins_titles=(
+    "偏好设置"
+    "搜索"
+)
+
+for title in "${qspace_file_browser_settins_titles[@]}"; do
+    yabai -m rule --add app="^QSpace Pro$" title="${title}" manage=off 
+done
+
+# 非企业微信本体 统统悬浮
+yabai -m rule --add app="^企业微信" title!="企业微信" manage=off
+
+
+yabai -m rule --add app="Monica" title="Options Monica" manage=off
+
+# --------------------------------------------------------- #
+# -------------------- Space Layouts ---------------------- #
+# --------------------------------------------------------- #
+yabai -m space 1 --label main
+yabai -m space 2 --label code
+yabai -m space 3 --label msg
+yabai -m space 4 --label term
+
+if [ "$display_mode" = "company" ]; then
+    # 公司
+    echo "company mode"
+    yabai -m space 1 --label main
+    yabai -m space 2 --label code2
+    yabai -m space 3 --label msg
+    yabai -m space 4 --label code
+    yabai -m space 5 --label term
+elif [ "$display_mode" = "home" ]; then
+    # 家
+    echo "home mode"
+    yabai -m space 1 --label main
+    yabai -m space 2 --label code2
+    yabai -m space 3 --label msg
+    yabai -m space 4 --label code
+    yabai -m space 5 --label term
+else
+    # 如果不是在公司，恢复到默认配置
+    yabai -m space 1 --label main
+    yabai -m space 2 --label code
+    yabai -m space 3 --label msg
+    yabai -m space 4 --label term
+fi
+
+# sapce 1
+yabai -m rule --add space=^main app="^(Arc)$"
+
+# sapce 2
+yabai -m rule --add space=^code app="^(Code|Cursor|微信开发者工具)$" manage=on
+# yabai -m signal --add event=window_created app="^Code$" action="sleep 0.5 && sh $scripts_path/stack_all_vscode.s"
+# 写代码的屏幕默认是堆叠的
+yabai -m config --space code layout stack
+
+# sapce 3
+space3_apps='^(企业微信|预览|QSpace Pro|Finder|访达|Listen1)$'
+yabai -m rule --add space=^msg app="${space3_apps}"
+
+# sapce 4
+space4_apps='^(WezTerm|iTerm2|Warp|终端|Terminal)$'
+yabai -m rule --add space=^term app="${space4_apps}"
+
+# --------------------------------------------------------- #
+# ------------------- StackLine Plugin -------------------- #
+# --------------------------------------------------------- #
+
+EVENT_TYPES=(
+    display_added
+    display_removed
+    display_changed
+    space_changed
+    application_visible
+    application_hidden
+    window_created
+    window_destroyed
+)
+
+for event in ${EVENT_TYPES[@]}; do
+    yabai -m signal --add event=$event action="hs -A -c 'stackline.manager:update({forceRedraw = true})'"
+done
+
+echo "yabai configuration loaded.."
+
+# --------------------------------------------------------- #
+# ------------------- Yabai Automation -------------------- #
+# --------------------------------------------------------- #
+yabai -m signal --add event=display_added action="yabai --restart-services"
+yabai -m signal --add event=display_removed action="yabai --restart-services"

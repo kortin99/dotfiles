@@ -1,0 +1,96 @@
+# This is Git's per-user configuration file.
+[user]
+  # Please adapt and uncomment the following lines:
+	name = kortin.zhou
+	email = kortin.zhou@ly.com
+	signingKey = 
+
+[alias]
+  st = status
+  ci = commit
+  cm = commit
+  cmm = commit -m
+  cam = commit -am
+  camd = commit --amend
+  cmd = commit --amend
+  cp = cherry-pick
+  cpx = cherry-pick -x
+  br = branch
+  co = checkout
+  ck = checkout
+  sw = switch
+  swc = switch -c
+  sh = stash
+  sp = stash pop
+  mr = merge
+  mb = merge-base
+  rbi = rebase -i
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ls = log --color --abbrev-commit --pretty=format:'[%C(red)%h%C(reset)] -%C(auto)%d%C(reset) %s %C(blue)(%cr) %C(bold magenta)<%an>%C(reset)'
+  lt = ls-tree -r HEAD~ --name-only
+	rss = reset --soft
+	pre = reset --soft HEAD^
+  pro = pull -r origin
+  pror = pull -r origin release-product
+  ui = !lazygit
+  lastcommit = !echo "$(git log -1 --pretty=%B)"
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[color]
+	ui = auto
+
+[core]
+	ignorecase = false
+  pager = delta
+	editor = code --wait
+
+[diff]
+	tool = Kaleidoscope
+  colorMoved = default
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[difftool]
+	prompt = false
+	trustExitCode = true
+
+[merge]
+	tool = Kaleidoscope
+  conflictstyle = diff3
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[mergetool]
+	prompt = false
+
+[init]
+	defaultBranch = master
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = true
+  side-by-side = true
+  line-numbers = true
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[gpg]
+	format = openpgp
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false
+[gpg "ssh"]
+	program = ssh-keygen
+	allowedSignersFile = 
