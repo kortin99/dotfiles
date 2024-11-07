@@ -9,18 +9,18 @@ source ./config.sh
 
 # 处理子命令
 case $1 in
-    init)
-        bash "$CURR_DIR/_scripts/init.sh"
+    backup)
+        bash "$CURR_DIR/_scripts/backup.sh"
         ;;
     setup)
         bash "$CURR_DIR/_scripts/setup.sh"
         ;;
     *)
         echo "Usage:"
-        echo "  $ $0 {init|setup}"
+        echo "  $ $0 {backup|setup}"
         echo ""
         echo "Commands:"
-        echo "  init     Copy the environment config files to current dotfiles project."
+        echo "  backup   Copy the environment config files to current dotfiles project."
         echo "  setup    Apply current dotfiles to the environment."
         exit 1
         ;;

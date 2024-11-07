@@ -26,7 +26,7 @@ for link in "${CONFIGS[@]}"; do
     # echo "Processing: $link"
     # echo "Source: $resolved_src"
     # echo "Destination: $dst"
-    echo "$resolved_src -- $dst"
+    echo "Copying $resolved_src --> $dst"
 
     # 检查源路径是否存在
     if [ ! -e "$resolved_src" ]; then
