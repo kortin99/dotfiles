@@ -2,7 +2,7 @@
 CONFIGS=(
     "nvim               ~/.config/nvim"
     "yabai              ~/.config/yabai"
-    "raycast            ~/.config/raycast"
+  # "raycast            ~/.config/raycast"
     "wezterm            ~/.config/wezterm"
     "iterm2             ~/.config/iterm2"
     "karabiner          ~/.config/karabiner"
