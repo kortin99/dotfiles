@@ -260,7 +260,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/iTerm.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -637,9 +637,7 @@
                         "product_id": 45108,
                         "vendor_id": 1133
                     },
-                    "ignore": false,
-                    "mouse_flip_horizontal_wheel": true,
-                    "mouse_flip_vertical_wheel": true
+                    "ignore": false
                 },
                 {
                     "identifiers": {
@@ -657,10 +655,6 @@
                         {
                             "from": { "key_code": "left_option" },
                             "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "right_control" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                         }
                     ]
                 },

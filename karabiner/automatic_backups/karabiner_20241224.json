@@ -260,7 +260,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Warp.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -638,8 +638,12 @@
                         "vendor_id": 1133
                     },
                     "ignore": false,
-                    "mouse_flip_horizontal_wheel": true,
-                    "mouse_flip_vertical_wheel": true
+                    "simple_modifications": [
+                        {
+                            "from": { "generic_desktop": "dpad_up" },
+                            "to": [{ "key_code": "escape" }]
+                        }
+                    ]
                 },
                 {
                     "identifiers": {
