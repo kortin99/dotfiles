@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local merge = require("utils.table").merge
 
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
@@ -45,13 +46,13 @@ local config = {
 	-- window
 	window_decorations = "RESIZE",
 	window_padding = {
-		left = 10,
-		right = 10,
-		top = 10,
+		left = 24,
+		right = 24,
+		top = 24,
 		bottom = 5,
 	},
 	window_frame = {
-		font_size = 14.0,
+		font_size = 15.0,
 		active_titlebar_bg = "#151d22",
 		inactive_titlebar_bg = "#151d22",
 	},
@@ -130,4 +131,7 @@ config.ssh_domains = {
 	},
 }
 
-return config
+--keys
+config.keys = {}
+
+return merge(config, require("keys"))

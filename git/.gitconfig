@@ -5,12 +5,18 @@
 	email = kortin.zhou@ly.com
 	signingKey = 
 
+[core]
+	ignorecase = false
+  pager = delta
+	editor = code --wait
+
 [alias]
   st = status
   ci = commit
   cm = commit
   cmm = commit -m
   cam = commit -am
+  amend = commit --amend
   camd = commit --amend
   cmd = commit --amend
   cp = cherry-pick
@@ -34,45 +40,47 @@
   pror = pull -r origin release-product
   ui = !lazygit
   lastcommit = !echo "$(git log -1 --pretty=%B)"
-
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clone-https = "! [ $# -ne 1 ] && echo 'Args: USERNAME/REPO_NAME' || git clone https://github.com/$1.git"
 
 [color]
 	ui = auto
 
-[core]
-	ignorecase = false
-  pager = delta
-	editor = code --wait
+[init]
+	defaultBranch = master
 
-[diff]
-	tool = Kaleidoscope
-  colorMoved = default
+[commit]
+	gpgSign = false
 
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[commit]
+	default = current
 
-[difftool]
-	prompt = false
-	trustExitCode = true
+[tag]
+	forceSignAnnotated = false
+
+[stash]
+	showStat = true
 
 [merge]
 	tool = Kaleidoscope
   conflictstyle = diff3
 
+[mergetool]
+	prompt = false
+
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 
-[mergetool]
-	prompt = false
+[diff]
+	tool = Kaleidoscope
+  colorMoved = default
 
-[init]
-	defaultBranch = master
+[difftool]
+	prompt = false
+	trustExitCode = true
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [interactive]
   diffFilter = delta --color-only --features=interactive
@@ -84,13 +92,19 @@
   line-numbers = true
   hyperlinks = true
   hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+
 [gpg]
 	format = openpgp
 	program = gpg
-[commit]
-	gpgSign = false
-[tag]
-	forceSignAnnotated = false
+
 [gpg "ssh"]
 	program = ssh-keygen
 	allowedSignersFile = 
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[includeIf "gitdir:/Users/kortin/WorkSpace/Personal/"]
+	path = /Users/kortin/WorkSpace/Personal/.gitconfig
