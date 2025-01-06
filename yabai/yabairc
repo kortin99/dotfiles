@@ -311,7 +311,7 @@ for event in ${EVENT_TYPES[@]}; do
     yabai -m signal --add event=$event action="hs -A -c 'stackline.manager:update({forceRedraw = true})'"
 done
 
-echo "yabai configuration loaded.."
+echo "yabai configuration loaded for $display_mode mode"
 
 # --------------------------------------------------------- #
 # ------------------- Yabai Automation -------------------- #

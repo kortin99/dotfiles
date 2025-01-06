@@ -260,7 +260,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Warp.app'" }],
                                 "type": "basic"
                             },
                             {

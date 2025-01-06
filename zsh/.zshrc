@@ -128,6 +128,8 @@ alias json="jq"
 alias cd="z"
 alias ls="eza --git --icons --color=always --group-directories-first"
 alias tmux="tmux -f ~/.config/tmux/.tmux.conf"
+alias pnpx="pnpm dlx"
+alias "?"="tldr"
 
 # suffix aliases
 alias -s zip="unzip"
@@ -321,6 +323,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# tldr 命令行 cheatsheet 工具
+export TLDR_LANGUAGE="zh"
+
 # volta
 export VOLTA_HOME="$XDG_CONFIG_HOME/volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
@@ -331,5 +336,9 @@ export VOLTA_FEATURE_PNPM=1
 eval "$(zoxide init zsh)"
 
 # 使用系统代理
-export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
+# export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
 export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,23.94.56.114
+
+alias '?'=tldr
+
+export PATH="$HOME/.local/bin:$PATH"
