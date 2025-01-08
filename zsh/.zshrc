@@ -45,13 +45,13 @@ ZSH_THEME="wedisagree"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -64,7 +64,7 @@ ZSH_THEME="wedisagree"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$ZSH/custom"
@@ -76,10 +76,24 @@ ZSH_CUSTOM="$ZSH/custom"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  git-commit
+  sudo
+  command-not-found
+  bun
+  eza
+  fzf
+  rsync
+  tldr # `Esc + tldr` to auto add tldr before the previous command
+  # themes # `lstheme` or `theme [name]`
+  # thefuck # twice Esc to correct previous command (conflicts with sudo plugin)
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-interactive-cd
   # z
-  sudo
+  zoxide
+  volta
+  copypath
+  copyfile
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -89,14 +103,14 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=zh_CN.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -108,27 +122,29 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 
-# bitwarden cli
-export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
-
 # quick config setup
 alias zshconfig="code ~/.zshrc"
+alias zshrc="${=EDITOR} ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias gitconfig="code ~/.gitconfig"
 alias yabaiconfig="code ~/.config/yabai"
 alias myip="ipconfig getifaddr en0"
 alias python=python3
 
-# always mistick type `git` as `gti`
-alias gti="git"
+alias gti="git" # allow mistick type `git` as `gti`
 alias lg="lazygit"
 alias grep="grep --color=auto"
 alias finder="open -a QSpace\ Pro"
 alias json="jq"
+alias p="ps -f"
+alias cp="cp -i"
+alias rm="rm -i"
+alias mv="mv -i"
 alias cd="z"
 alias ls="eza --git --icons --color=always --group-directories-first"
 alias tmux="tmux -f ~/.config/tmux/.tmux.conf"
 alias pnpx="pnpm dlx"
+alias cao="fuck"
 alias "?"="tldr"
 
 # suffix aliases
@@ -279,15 +295,13 @@ notify() {
   fi
 }
 
-
 #
 # Env Exports
 #
-export LANG="zh_CN.UTF-8"
+test -e "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh" && source "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-test -e "${HOME}/.config/wezterm/shell_integration.zsh" && source "${HOME}/.config/wezterm/shell_integration.zsh"
+test -e "${HOME}/.config/wezterm/shell/shell_integration.sh" && source "${HOME}/.config/wezterm/shell/shell_integration.sh"
+test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/.config/wezterm/shell/shell_completion.zsh"
 
 export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -333,12 +347,14 @@ export VOLTA_FEATURE_PNPM=1
 # volta end
 
 # 使用 zoxide 替代 z
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
+eval $(thefuck --alias)
 
 # 使用系统代理
 # export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
 export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,23.94.56.114
 
-alias '?'=tldr
-
 export PATH="$HOME/.local/bin:$PATH"
+
+# bitwarden cli
+export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
