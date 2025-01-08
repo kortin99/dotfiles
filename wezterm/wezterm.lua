@@ -134,4 +134,13 @@ config.ssh_domains = {
 --keys
 config.keys = {}
 
+-- Notification when the configuration is reloaded
+local function toast(window, message)
+	window:toast_notification("wezterm", message .. " - " .. os.date("%I:%M:%S %p"), nil, 1000)
+end
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	toast(window, "Configuration reloaded!")
+end)
+
 return merge(config, require("keys"))

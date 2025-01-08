@@ -11,6 +11,33 @@ local modifier = {
 }
 
 local keys = {
+	-- Natural Text Editing
+	{
+		key = "LeftArrow",
+		mods = "OPT",
+		action = wezterm.action.SendKey({ mods = "ALT", key = "b" }),
+	},
+	{
+		key = "RightArrow",
+		mods = "OPT",
+		action = wezterm.action.SendKey({ mods = "ALT", key = "f" }),
+	},
+	{
+		key = "LeftArrow",
+		mods = "CMD",
+		action = wezterm.action.SendKey({ mods = "CTRL", key = "a" }),
+	},
+	{
+		key = "RightArrow",
+		mods = "CMD",
+		action = wezterm.action.SendKey({ mods = "CTRL", key = "e" }),
+	},
+	{
+		key = "Backspace",
+		mods = "CMD",
+		action = wezterm.action.SendKey({ mods = "CTRL", key = "u" }),
+	},
+
 	-- 复制粘贴
 	{
 		key = "c",
@@ -38,6 +65,16 @@ local keys = {
 		key = "w",
 		mods = modifier.CMD_SHIFT,
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "h",
+		mods = "CMD|ALT",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "l",
+		mods = "CMD|ALT",
+		action = wezterm.action.ActivateTabRelative(1),
 	},
 
 	-- 窗格分屏
