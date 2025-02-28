@@ -1,0 +1,88 @@
+{
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    },
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["J"],
+      "after": ["1", "0", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["1", "0", "k"]
+    },
+    {
+      "before": ["H"],
+      "after": ["1", "0", "j"]
+    },
+    {
+      "before": ["L"],
+      "after": ["^"]
+    },
+    // normal 模式下 Y 复制整行到系统剪切板
+    {
+      "before": ["Y"],
+      "after": ["\"", "+", "y", "y"]
+    },
+    {
+      "before": ["<leader>", "c", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    // 行移动
+    {
+      "before": ["m", "j"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["m", "k"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    // 变量重命名
+    {
+      "before": ["<leader>", "r", "n"],
+      "commands": ["editor.action.rename"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // visual 模式中 Y 复制当前已选内容到系统剪切板
+    {
+      "before": ["Y"],
+      "after": ["\"", "+", "y"]
+    }
+  ],
+  "vim.operatorPendingModeKeyBindings": [
+    {
+      "before": ["L"],
+      "after": ["g", "_"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    }
+  ],
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.neovimConfigPath": "~/.config/nvim/init.lua",
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.useCtrlKeys": false,
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
+  "vim.leader": " ",
+  "vim.highlightedyank.enable": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
+  }
+}

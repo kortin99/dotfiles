@@ -248,7 +248,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Cursor.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -339,7 +339,6 @@
                     },
                     {
                         "description": "Super (Tab) + MFZ → yabai toggle mode",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Super (Tab) + m → toggle yabai float manage",
@@ -393,7 +392,6 @@
                     },
                     {
                         "description": "Super (Tab) + WASD and ;' → yabai window warp",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Super (Tab) + w → yabai window move to up",
@@ -502,7 +500,6 @@
                     },
                     {
                         "description": "Super (Tab) + GHJKL and QE → yabai window focus",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Super (Tab) + h → yabai window focus left",
@@ -592,7 +589,6 @@
                     },
                     {
                         "description": "Super (Tab) + arrow keys (←↓↑→) → yabai window resize",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Super (Tab) + up → yabai window increase size upwards",

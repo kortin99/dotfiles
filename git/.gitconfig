@@ -2,7 +2,7 @@
 [user]
   # Please adapt and uncomment the following lines:
 	name = kortin.zhou
-	email = kortin.zhou@ly.com
+	email = hi@kortin.cn
 	signingKey = 
 
 [core]
@@ -118,7 +118,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[includeIf "gitdir:/Users/kortin/WorkSpace/Personal/"]
-	path = /Users/kortin/WorkSpace/Personal/.gitconfig
+[includeIf "gitdir:/Users/kortin/WorkSpace/GitRepo/"]
+	path = /Users/kortin/WorkSpace/GitRepo/.gitconfig
 [oh-my-zsh]
-	git-commit-alias = b9e73b44811becbdf24cff54441c73839a29c523
+	git-commit-alias = 92da3108b52be506dc1334e8f0dc67c5d1c13d57

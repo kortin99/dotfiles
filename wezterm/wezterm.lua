@@ -30,6 +30,10 @@ local config = {
 			family = "Consolas",
 			weight = "Bold",
 		},
+
+		{
+			family = "SF Pro",
+		},
 	}),
 	adjust_window_size_when_changing_font_size = false,
 

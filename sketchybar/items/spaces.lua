@@ -26,12 +26,17 @@ for i = 1, 10, 1 do
 		padding_right = 1,
 		padding_left = 1,
 		background = {
-			color = colors.bg1,
+			color = colors.transparent,
 			border_width = 1,
 			height = 26,
-			border_color = colors.black,
+			border_color = colors.transparent,
 		},
-		popup = { background = { border_width = 5, border_color = colors.black } },
+		popup = {
+			background = {
+				border_width = 5,
+				border_color = colors.black,
+			},
+		},
 	})
 
 	spaces[i] = space
@@ -40,7 +45,7 @@ for i = 1, 10, 1 do
 	local space_bracket = sbar.add("bracket", { space.name }, {
 		background = {
 			color = colors.transparent,
-			border_color = colors.bg2,
+			border_color = colors.transparent,
 			height = 28,
 			border_width = 2,
 		},
@@ -72,20 +77,29 @@ for i = 1, 10, 1 do
 		space:set({
 			icon = { highlight = selected },
 			label = { highlight = selected },
-			background = { border_color = selected and colors.black or colors.bg2 },
+			background = {
+				border_color = selected and colors.black or colors.transparent,
+				color = selected and colors.bg2 or colors.transparent,
+			},
 		})
 		space_bracket:set({
-			background = { border_color = selected and colors.grey or colors.bg2 },
+			background = {
+				border_color = selected and colors.grey or colors.transparent,
+			},
 		})
 	end)
 
 	space:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "other" then
+		if env.BUTTON == "right" then
 			space_popup:set({ background = { image = "space." .. env.SID } })
 			space:set({ popup = { drawing = "toggle" } })
 		else
-			local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
+			sbar.exec(
+				string.format(
+					'osascript -e "tell application \\"System Events\\" to key code %d using {control down, shift down, option down}"',
+					env.SID + 17
+				)
+			)
 		end
 	end)
 

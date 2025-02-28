@@ -1,0 +1,47 @@
+{
+  "breadcrumbs.enabled": false,
+  "animations.Install-Method": "Custom UI Style",
+  "animations.Default-Duration": 100,
+  "animations.Tabs": "Slide",
+  "animations.Scrolling": "Slide",
+  "animations.Active": "Indent",
+  "animations.UseCursorColorForCursorAnimation": true,
+  "animations.CursorAnimation": true,
+  "editor.quickSuggestions": {
+    "other": "off"
+  },
+  "editor.tabCompletion": "on",
+  "helium-icon-theme.hidesExplorerArrows": true,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.tree.indent": 18,
+  "workbench.activityBar.location": "top",
+  "window.zoomLevel": 0.6,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingDelete": "always",
+  "editor.autoClosingOvertype": "always",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.defaultColorDecorators": "auto",
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospaceb, 'Symbols Nerd Font Mono'",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 2,
+  "editor.lineNumbers": "relative",
+  "editor.renderWhitespace": "trailing",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 120,
+  "explorer.compactFolders": false,
+  "files.autoSave": "onFocusChange",
+  "custom-ui-style.external.imports": [
+    ""
+  ],
+  "custom-ui-style.stylesheet": {
+    // 让命令面板居中
+    ".quick-input-widget": "top: 25vh !important",
+    ".quick-input-list .scrollbar": "display: none",
+    ".monaco-action-bar.quick-input-inline-action-bar": "display: none"
+  },
+}
