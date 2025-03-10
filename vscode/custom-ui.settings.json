@@ -1,4 +1,5 @@
 {
+  // 需要安装插件：Custom UI Style、VScode Animations
   "breadcrumbs.enabled": false,
   "animations.Install-Method": "Custom UI Style",
   "animations.Default-Duration": 100,
@@ -32,16 +33,50 @@
   "editor.stickyScroll.enabled": true,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "editor.wordWrapColumn": 120,
+  "editor.wordWrapColumn": 120, 
   "explorer.compactFolders": false,
   "files.autoSave": "onFocusChange",
   "custom-ui-style.external.imports": [
-    ""
+    "" // VSCode Animations 的样式或脚本
   ],
-  "custom-ui-style.stylesheet": {
-    // 让命令面板居中
-    ".quick-input-widget": "top: 25vh !important",
-    ".quick-input-list .scrollbar": "display: none",
-    ".monaco-action-bar.quick-input-inline-action-bar": "display: none"
+  "custom-ui-style.electron": {
+    "titleBarStyle": "hiddenInset",
+    "trafficLightPosition": {
+      "x": 20,
+      "y": 16
+    }
   },
+  "custom-ui-style.stylesheet": {
+    // 查找小组件铺满编辑器宽度，
+    ".editor-widget.find-widget": "border-radius: 4px; width: calc(100% + 30px) !important; right: 0 !important;",
+    // 解决命令中心小组件搜索框右侧空白，导致不对齐的问题
+    ".monaco-action-bar.quick-input-inline-action-bar": "display: none",
+    // 鼠标光标渐变颜色
+    ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #ffaffc 10%, #DA70D6 100%)",
+    // 顶部 tabs 让出红绿灯的位置，并禁用滚动条
+    ".tabs-and-actions-container": "margin-left: 68px",
+    ".tabs-and-actions-container .scrollbar.horizontal": "display: none;",
+    // Cursor 的侧边栏顶部分类
+    ".sidebar.left > div > div > div:nth-of-type(1) > div > div": "margin-left: 58px; width: calc(100% - 60px); justify-content: flex-start !important",
+    // 代码粘滞适配查找和替换小组件
+    ".overlayWidgets:has(.editor-widget.find-widget.visible) .sticky-widget": "top: 33px !important",
+    ".overlayWidgets:has(.editor-widget.find-widget.visible.replaceToggled) .sticky-widget": "top: 62px !important",
+    // 资源管理器聚焦文件的边框
+    ".monaco-list-row.focused": "outline: none !important",
+    ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
+    ".monaco-workbench .part.editor > .content .editor-group-container > .title.title-border-bottom:after": "display: none",
+    // 命令中心小组件居中
+    ".quick-input-widget": "top: 25vh !important",
+    ".quick-input-list .scrollbar": "width: 2px !important",
+    ".quick-input-titlebar": "background: #100B15 !important",
+    // 隐藏侧边栏的面板分割线
+    ".sidebar": "border: none !important",
+    ".title .monaco-icon-label.file-icon": "margin: 0 20px",
+    ".title .monaco-icon-label:after": "margin-right: 0",
+    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "justify-content: center; padding: 0 !important",
+    // 改变编辑器滚动条宽度
+    ".monaco-editor .editor-scrollable > .scrollbar.horizontal": "height: 4px !important",
+    ".monaco-editor .editor-scrollable > .scrollbar.vertical": "width: 4px !important",
+    ".monaco-editor .editor-scrollable > .decorationsOverviewRuler": "width: 4px !important"
+  }
 }

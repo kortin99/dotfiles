@@ -1,15 +1,41 @@
 {
+  "vim.leader": " ",
+  "vim.useCtrlKeys": false,
+  "vim.neovimConfigPath": "~/.config/nvim/init.lua",
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
+  },
+  "vim.highlightedyank.enable": true,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "after": ["<Esc>"],
+      "before": ["j", "j"]
     },
     {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
+      "after": ["<Esc>"],
+      "before": ["j", "k"]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    },
     {
       "before": ["J"],
       "after": ["1", "0", "j"]
@@ -20,11 +46,11 @@
     },
     {
       "before": ["H"],
-      "after": ["1", "0", "j"]
+      "after": ["^"]
     },
     {
       "before": ["L"],
-      "after": ["^"]
+      "after": ["g", "_"]
     },
     // normal 模式下 Y 复制整行到系统剪切板
     {
@@ -48,13 +74,11 @@
     {
       "before": ["<leader>", "r", "n"],
       "commands": ["editor.action.rename"]
-    }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    // visual 模式中 Y 复制当前已选内容到系统剪切板
+    },
+    // redo
     {
-      "before": ["Y"],
-      "after": ["\"", "+", "y"]
+      "before": ["U"],
+      "after": ["C-r"]
     }
   ],
   "vim.operatorPendingModeKeyBindings": [
@@ -67,22 +91,19 @@
       "after": ["^"]
     }
   ],
-  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-  "vim.camelCaseMotion.enable": true,
-  "vim.easymotion": true,
-  "vim.enableNeovim": true,
-  "vim.neovimConfigPath": "~/.config/nvim/init.lua",
-  "vim.neovimPath": "/opt/homebrew/bin/nvim",
-  "vim.neovimUseConfigFile": true,
-  "vim.useCtrlKeys": false,
-  "vim.autoSwitchInputMethod.enable": true,
-  "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
-  "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
-  "vim.leader": " ",
-  "vim.highlightedyank.enable": true,
-  "vim.handleKeys": {
-    "<C-d>": true,
-    "<C-s>": false,
-    "<C-z>": false
-  }
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // visual 模式中 Y 复制当前已选内容到系统剪切板
+    {
+      "before": ["Y"],
+      "after": ["\"", "+", "y"]
+    },
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    }
+  ]
 }
