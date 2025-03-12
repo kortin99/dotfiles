@@ -1,0 +1,334 @@
+[
+  // 左侧面板快速切换 - 文件资源管理
+  {
+    "key": "shift+cmd+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled && !filesExplorerFocus"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "viewContainer.workbench.view.explorer.enabled && explorerViewletVisible"
+  },
+
+  // 左侧面板快速切换 - git
+  {
+    "key": "shift+cmd+g",
+    "command": "-editor.action.previousMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-workbench.action.terminal.findPrevious",
+    "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "-workbench.action.terminal.openDetectedLink",
+    "when": "accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal'"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+
+  // 快速打开内置终端
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+
+    // 新增/删除终端实例
+    {
+      "key": "cmd+t",
+      "command": "workbench.action.terminal.new",
+      "when": "terminalFocus && (terminalProcessSupported || terminalWebExtensionContributedProfile)"
+    },
+    {
+      "key": "cmd+w t",
+      "command": "workbench.action.terminal.kill",
+      "when": "terminalHasBeenCreated || terminalIsOpen || terminalProcessSupported"
+    },
+
+    // 切换终端面板最大化
+    {
+      "key": "ctrl+cmd+m",
+      "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+      "key": "ctrl+cmd+t",
+      "command": "-tailwind-documentation.search"
+    },
+
+  // 禁用 mac 的 cmd+h 隐藏窗口，并替换成 vscode 的查找替换
+  {
+    "key": "cmd+h",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+
+  // 快速切换当前打开的 Tab
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+    "when": "!activeEditorGroupEmpty"
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.quickOpenNavigateNextInEditorPicker",
+    "when": "inEditorsPicker && inQuickOpen"
+  },
+  {
+    "key": "cmd+e",
+    "command": "-actions.findWithSelection"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.showEditorsInActiveGroup",
+    "when": "inEditorsPicker"
+  },
+
+  // 快速关闭当前已打开的编辑器
+  {
+    "key": "cmd+w w",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "cmd+w o",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "alt+cmd+t",
+    "command": "-workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "cmd+w r",
+    "command": "workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "-workbench.action.reopenClosedEditor"
+  },
+  {
+    "key": "cmd+w a",
+    "command": "workbench.action.closeEditorsInGroup"
+  },
+  {
+    "key": "cmd+k w",
+    "command": "-workbench.action.closeEditorsInGroup"
+  },
+  {
+    "key": "cmd+w s",
+    "command": "workbench.action.closeUnmodifiedEditors"
+  },
+  {
+    "key": "cmd+k u",
+    "command": "-workbench.action.closeUnmodifiedEditors"
+  },
+
+  // 禁用打开外部终端
+  {
+    "key": "shift+cmd+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+
+  // git 相关 - 在 git 面板打开情况下触发相关的快捷操作
+  {
+    "key": "cmd+g g",
+    "command": "-lazygit.openLazygit"
+  },
+  {
+    "key": "cmd+g cmd+g",
+    "command": "lazygit.openLazygit",
+    "when": "true || activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g a",
+    "command": "git.commitAll",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g p",
+    "command": "git.push",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g m",
+    "command": "git.merge",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g shift+p",
+    "command": "git.pushForce",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g f",
+    "command": "git.pull",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "cmd+g s",
+    "command": "git.stash",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+
+  // console.log
+  {
+    "key": "shift+alt+c",
+    "command": "-turboConsoleLog.commentAllLogMessages"
+  },
+  {
+    "key": "shift+alt+d",
+    "command": "-turboConsoleLog.deleteAllLogMessages"
+  },
+  {
+    "key": "ctrl+alt+l",
+    "command": "-turboConsoleLog.displayLogMessage"
+  },
+  {
+    "key": "shift+alt+u",
+    "command": "-turboConsoleLog.uncommentAllLogMessages"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "extension.insertLogStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-extension.insertLogStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+c i",
+    "command": "extension.insertInfoStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+cmd+l",
+    "command": "-extension.insertInfoStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+c w",
+    "command": "extension.insertWarnStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+cmd+l",
+    "command": "-extension.insertWarnStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+c e",
+    "command": "extension.insertErrorStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+cmd+l",
+    "command": "-extension.insertErrorStatement",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+c delete",
+    "command": "extension.deleteAllLogStatements",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "-extension.deleteAllLogStatements",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+c backspace",
+    "command": "extension.deleteAllLogStatements",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+a",
+    "command": "-editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // 工作区禁用格式化快捷键
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument.none",
+    "when": "config.workspaceKeybindings.editorFormatter.disabled"
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument",
+    "when": "config.workspaceKeybindings.editorFormatter.disabled"
+  },
+
+  // 调整编辑器宽度
+  {
+    "key": "ctrl+cmd+left",
+    "command": "workbench.action.increaseViewWidth"
+  },
+  {
+    "key": "ctrl+cmd+right",
+    "command": "workbench.action.decreaseViewWidth"
+  },
+
+  // 聚焦到编辑器
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorTextFocus"
+  },
+
+  // 聚焦到资源管理器
+  {
+    "key": "ctrl+h",
+    "command": "workbench.files.action.focusFilesExplorer",
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-deleteLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-deleteAllRight",
+    "when": "textInputFocus && !editorReadonly"
+  }
+]
