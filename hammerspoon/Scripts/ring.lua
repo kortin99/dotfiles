@@ -116,12 +116,13 @@ end
 local APPLICATIONS = {
 	{ name = "Arc", icon = "/Applications/Arc.app/Contents/Resources/AppIcon.icns" },
 	{ name = "WeChat", icon = "/Applications/WeChat.app/Contents/Resources/AppIcon.icns" },
-	{ name = "企业微信", icon = "/Applications/企业微信.app/Contents/Resources/AppIcon.icns" },
+	{ name = "NeteaseMusic", icon = "/Applications/NeteaseMusic.app/Contents/Resources/163Music.icns" },
 	-- { name = 'Google Chrome', icon = '/Applications/Google Chrome.app/Contents/Resources/app.icns' },
 	-- { name = 'Visual Studio Code', icon = '/Applications/Visual Studio Code.app/Contents/Resources/Code.icns' },
 	{ name = "Cursor", icon = "/Applications/Cursor.app/Contents/Resources/Cursor.icns" },
 	-- { name = 'WebStorm', icon = '/Applications/WebStorm.app/Contents/Resources/webstorm.icns' },
 	{ name = "ApiFox", icon = "/Applications/Apifox.app/Contents/Resources/icon.icns" },
+	{ name = "企业微信", icon = "/Applications/企业微信.app/Contents/Resources/AppIcon.icns" },
 }
 -- 菜单圆环大小
 local RING_SIZE = 280
