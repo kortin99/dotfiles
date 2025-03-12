@@ -1,8 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
+    - /Users/kortin/WorkSpace/Personal/dotfiles
+    - /Users/kortin/WorkSpace/GitRepo/elong-h5
+    - /Users/kortin/WorkSpace/GitRepo/web-infra
     - /Users/kortin/WorkSpace/GitRepo/furion-cdp-web
     - /Users/kortin/WorkSpace/GitHub/streampark-website
-    - /Users/kortin/WorkSpace/Personal/dotfiles
     - /Users/kortin/WorkSpace/GitRepo/elong-pc
     - /Users/kortin/WorkSpace/GitHub/biome-website
     - /Users/kortin/WorkSpace/Personal/unocss-preset

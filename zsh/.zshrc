@@ -111,7 +111,8 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   # export EDITOR='nvim'
-  export EDITOR='trae'
+  # export EDITOR='trae'
+  export EDITOR='cursor'
 fi
 
 # Compilation flags

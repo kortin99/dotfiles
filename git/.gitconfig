@@ -3,12 +3,12 @@
   # Please adapt and uncomment the following lines:
 	name = kortin.zhou
 	email = hi@kortin.cn
-	signingKey = 
+	signingKey =
 
 [core]
 	ignorecase = false
   pager = delta
-	editor = code --wait
+	editor = cursor --wait
 
 [alias]
   st = status
@@ -111,7 +111,7 @@
 
 [gpg "ssh"]
 	program = ssh-keygen
-	allowedSignersFile = 
+	allowedSignersFile =
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
