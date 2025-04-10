@@ -325,18 +325,6 @@
                                 },
                                 "to": [{ "shell_command": "open '/Applications/企业微信.app'" }],
                                 "type": "basic"
-                            },
-                            {
-                                "description": "Hyper + M → Launch 网易云音乐",
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/NeteaseMusic.app'" }],
-                                "type": "basic"
                             }
                         ]
                     },

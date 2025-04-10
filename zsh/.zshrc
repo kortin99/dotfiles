@@ -1,12 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="$HOME/.local/runtime/$UID"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+
+SHELL_SESSIONS_DISABLE=1
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -42,10 +48,10 @@ ZSH_THEME="wedisagree"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -106,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
 
-# Preferred editor for local and remote sessions
+# 默认编辑器
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
@@ -146,6 +152,7 @@ alias mv="mv -i"
 alias cd="z"
 alias ls="eza --git --icons --color=always --group-directories-first"
 alias tmux="tmux -f ~/.config/tmux/.tmux.conf"
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias pnpx="pnpm dlx"
 alias cao="fuck"
 alias "?"="tldr"
@@ -156,9 +163,9 @@ alias -s gz="tar -zxvf"
 alias -s tgz="tar -zxvf"
 alias -s bz2="tar -jxvf"
 
-#
-# Git shortcuts
-#
+#########################################################
+########################  Git  #########################
+########################################################
 
 # git-release <remote-branch> : 将当前分支的提交强制推送到远程分支，以触发CI/CD
 git-release() {
@@ -203,7 +210,7 @@ git-commit-all() {
 
     # 交互式输入 commit message
     local message=$(gum input --placeholder "输入提交信息" --prompt "✏️ " --width 80)
-    
+
     if [ -z "$message" ]; then
         gum style --foreground 196 "❌ 提交信息不能为空"
         return 1
@@ -248,7 +255,7 @@ git-branch-manager() {
     "删除分支")
       local branch=$(git branch | grep -v '\*' | gum filter --placeholder "选择删除对象")
       [ -z "$branch" ] && return
-      
+
       gum confirm "确认删除分支 $branch？" && \
         git branch -D "$branch" | \
         gum spin --title "正在删除..."
@@ -327,18 +334,6 @@ chrome() {
   open -a "Google Chrome" $1
 }
 
-# 删除volta指定node版本
-rm-volta-node() {
-  local nodeVersion=$1
-  local nodePath="$XDG_CONFIG_HOME/volta/tools/image/node/$nodeVersion"
-  if [ -d "$nodePath" ]; then
-    rm -rf $nodePath
-    echo "已删除volta node版本: $nodeVersion"
-  else
-    echo "volta node版本不存在: $nodeVersion"
-  fi
-}
-
 # 重启服务
 restart() {
   case "$1" in
@@ -359,7 +354,7 @@ restart() {
       sudo systemctl reload nginx
       ;;
     *)
-      echo "Unsupported argument. Usage: restart [yabai|zsh|nginx]"
+      echo "Unsupported argument. Usage: restart [yabai|zsh|nginx|sketchybar]"
       ;;
   esac
 }
@@ -375,17 +370,58 @@ notify() {
   fi
 }
 
-#
-# Env Exports
-#
-test -e "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh" && source "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh"
 
-test -e "${HOME}/.config/wezterm/shell/shell_integration.sh" && source "${HOME}/.config/wezterm/shell/shell_integration.sh"
-test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/.config/wezterm/shell/shell_completion.zsh"
 
-export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles
-export HOMEBREW_NO_AUTO_UPDATE=1
-# export PATH="$PATH:/usr/local/opt/python/libexec/bin"
+
+
+
+#########################################################
+########################  前端  #########################
+########################################################
+# volta 配置
+export VOLTA_HOME="$XDG_CONFIG_HOME/volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export VOLTA_FEATURE_PNPM=1
+
+# npm XDG 目录配置
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
+
+# node REPL 历史记录
+export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
+
+# pnpm 环境变量
+export PNPM_HOME="/Users/kortin/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# 删除volta指定node版本
+rm-volta-node() {
+  local nodeVersion=$1
+  local nodePath="$XDG_CONFIG_HOME/volta/tools/image/node/$nodeVersion"
+  if [ -d "$nodePath" ]; then
+    rm -rf $nodePath
+    echo "已删除volta node版本: $nodeVersion"
+  else
+    echo "volta node版本不存在: $nodeVersion"
+  fi
+}
+
+
+
+
+
+#########################################################
+########################  后端  #########################
+########################################################
+# XDG
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
 # flutter
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
@@ -398,43 +434,57 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 # Android Studio
 # /Users/kortin/Library/Android/sdk
 
-# bun
-export BUN_INSTALL="$XDG_CONFIG_HOME/bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-# bun completions
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-# bun end
+# python XDG
+export PYTHON_HISTORY="$XDG_CACHE_HOME/python/history"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
-# npm
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-# npm end
 
-# pnpm
-export PNPM_HOME="/Users/kortin/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+#########################################################
+########################  工具  #########################
+########################################################
+
+# homebrew
+export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.aliyun.com/homebrew/homebrew-bottles
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# fzf
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+# x-cmd
+[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
+
+# bitwarden cli
+export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
 
 # tldr 命令行 cheatsheet 工具
 export TLDR_LANGUAGE="zh"
 
-# volta
-export VOLTA_HOME="$XDG_CONFIG_HOME/volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-export VOLTA_FEATURE_PNPM=1
-# volta end
 
 # 使用 zoxide 替代 z
 # eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 
+# iterm2
+test -e "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh" && source "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh"
+
+# wezterm
+test -e "${HOME}/.config/wezterm/shell/shell_integration.sh" && source "${HOME}/.config/wezterm/shell/shell_integration.sh"
+test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/.config/wezterm/shell/shell_completion.zsh"
+
+
+
+
+
+
+#########################################################
+########################  环境  #########################
+########################################################
+
 # 使用系统代理
 export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
 export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,23.94.56.114
 
-export PATH="$HOME/.local/bin:$PATH"
+# 设置终端默认输入法为英文
+eval $(im-select com.apple.keylayout.ABC)
 
-# bitwarden cli
-export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"

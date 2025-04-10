@@ -2,6 +2,7 @@ local colors = require("colors")
 local icons = require("icons")
 local settings = require("settings")
 local app_icons = require("helpers.app_icons")
+-- local timer = require('timer')
 
 local spaces = {}
 
@@ -58,6 +59,7 @@ for i = 1, 10, 1 do
 		width = settings.group_paddings,
 	})
 
+  -- 空间预览
 	local space_popup = sbar.add("item", {
 		position = "popup." .. space.name,
 		padding_left = 5,
@@ -71,8 +73,8 @@ for i = 1, 10, 1 do
 		},
 	})
 
-	space:subscribe("space_change", function(env)
-		local selected = env.SELECTED == "true"
+	space:subscribe("space_change", function(event)
+		local selected = event.SELECTED == "true"
 		local color = selected and colors.grey or colors.bg2
 		space:set({
 			icon = { highlight = selected },
@@ -89,21 +91,34 @@ for i = 1, 10, 1 do
 		})
 	end)
 
-	space:subscribe("mouse.clicked", function(env)
-		if env.BUTTON == "right" then
-			space_popup:set({ background = { image = "space." .. env.SID } })
+	space:subscribe("mouse.clicked", function(event)
+		if event.BUTTON == "right" then
+			space_popup:set({ background = { image = "space." .. event.SID } })
 			space:set({ popup = { drawing = "toggle" } })
 		else
 			sbar.exec(
 				string.format(
 					'osascript -e "tell application \\"System Events\\" to key code %d using {control down, shift down, option down}"',
-					env.SID + 17
+					event.SID + 17
 				)
 			)
 		end
 	end)
 
+  local mouse_hover = false
+  -- 鼠标悬停时显示空间预览
+  space:subscribe("mouse.entered", function(event)
+    mouse_hover = true
+
+		-- 悬浮 2 秒才展示，避免频繁触发
+    space_popup:set({ background = { image = "space." .. event.SID } })
+    space:set({ popup = { drawing = "toggle" } })
+	end)
+
+	-- 鼠标离开时隐藏空间预览
 	space:subscribe("mouse.exited", function(_)
+    mouse_hover = false
+    print("mouse.exited", mouse_hover)
 		space:set({ popup = { drawing = false } })
 	end)
 end
@@ -135,13 +150,14 @@ local spaces_indicator = sbar.add("item", {
 	},
 })
 
-space_window_observer:subscribe("space_windows_change", function(env)
+space_window_observer:subscribe("space_windows_change", function(event)
 	local icon_line = ""
 	local no_app = true
-	for app, count in pairs(env.INFO.apps) do
+	for app, count in pairs(event.INFO.apps) do
 		no_app = false
-		local lookup = app_icons[app]
-		local icon = ((lookup == nil) and app_icons["default"] or lookup)
+		-- local lookup = app_icons[app]
+		-- local icon = ((lookup == nil) and app_icons["default"] or lookup)
+    local icon = app_icons[app] or app_icons["default"] or ""
 		icon_line = icon_line .. " " .. icon
 	end
 
@@ -149,18 +165,18 @@ space_window_observer:subscribe("space_windows_change", function(env)
 		icon_line = " —"
 	end
 	sbar.animate("tanh", 10, function()
-		spaces[env.INFO.space]:set({ label = icon_line })
+		spaces[event.INFO.space]:set({ label = icon_line })
 	end)
 end)
 
-spaces_indicator:subscribe("swap_menus_and_spaces", function(env)
+spaces_indicator:subscribe("swap_menus_and_spaces", function(event)
 	local currently_on = spaces_indicator:query().icon.value == icons.switch.on
 	spaces_indicator:set({
 		icon = currently_on and icons.switch.off or icons.switch.on,
 	})
 end)
 
-spaces_indicator:subscribe("mouse.entered", function(env)
+spaces_indicator:subscribe("mouse.entered", function(event)
 	sbar.animate("tanh", 30, function()
 		spaces_indicator:set({
 			background = {
@@ -173,7 +189,7 @@ spaces_indicator:subscribe("mouse.entered", function(env)
 	end)
 end)
 
-spaces_indicator:subscribe("mouse.exited", function(env)
+spaces_indicator:subscribe("mouse.exited", function(event)
 	sbar.animate("tanh", 30, function()
 		spaces_indicator:set({
 			background = {
@@ -186,6 +202,6 @@ spaces_indicator:subscribe("mouse.exited", function(env)
 	end)
 end)
 
-spaces_indicator:subscribe("mouse.clicked", function(env)
+spaces_indicator:subscribe("mouse.clicked", function(event)
 	sbar.trigger("swap_menus_and_spaces")
 end)
