@@ -397,70 +397,68 @@ local function handleHideMenu()
 end
 
 function isOnlyAltDown(event)
-  local modifiers = event:getFlags()
-  local keyCode = event:getKeyCode()
+	local modifiers = event:getFlags()
+	local keyCode = event:getKeyCode()
 
-  -- 如果 alt 键没有被按下，直接返回 false
-  if not modifiers.alt then
-    return false
-  end
+	-- 如果 alt 键没有被按下，直接返回 false
+	if not modifiers.alt then
+		return false
+	end
 
-  -- 检查可能的其他修饰键
-  -- 如果有任何其他修饰键被按下，flags 表中会有额外的键
-  local count = 0
-  for _ in pairs(modifiers) do
-    print(_)
-    count = count + 1
-  end
+	-- 检查可能的其他修饰键
+	-- 如果有任何其他修饰键被按下，flags 表中会有额外的键
+	local count = 0
+	for _ in pairs(modifiers) do
+		print(_)
+		count = count + 1
+	end
 
-  print('count',count)
-  print('keyCode',keyCode)
+	print("count", count)
+	print("keyCode", keyCode)
 
-  -- 如果只有 alt 键被按下，flags 表中应该只有一个键
-  return count == 1 and keyCode == 58
+	-- 如果只有 alt 键被按下，flags 表中应该只有一个键
+	return count == 1 and keyCode == 58
 end
 
 local isAltPressed = false
-local timer = hs.timer.new(0.3, function()
-  isAltPressed = false
+local timer = hs.timer.new(0.15, function()
+	isAltPressed = false
 end)
 -- 处理按键事件
 local function handleKeyEvent(event)
 	-- local isAltDown = event:getFlags().alt
-  --  判断只有 alt 键按下，而不是 alt + 其他快捷键
-  -- local keyFlags = event:getFlags()
-  -- 检查是否只有 alt 键被按下，而不是 alt + 其他快捷键
-  local isAltDown = isOnlyAltDown(event)
-  print('isAltDown',isAltDown)
+	--  判断只有 alt 键按下，而不是 alt + 其他快捷键
+	-- local keyFlags = event:getFlags()
+	-- 检查是否只有 alt 键被按下，而不是 alt + 其他快捷键
+	local isAltDown = isOnlyAltDown(event)
+	print("isAltDown", isAltDown)
 
+	timer:stop()
 
-  timer:stop()
+	if not isAltDown then
+		handleHideMenu()
+		return false
+	end
 
-  if (not isAltDown) then
-    handleHideMenu()
-    return false
-  end
+	-- 如果是第一次按下 alt 键，则记录状态
+	if isAltPressed == false and isAltDown == true then
+		isAltPressed = true
 
-  -- 如果是第一次按下 alt 键，则记录状态
-  if (isAltPressed == false and isAltDown == true) then
-    isAltPressed = true
+		print("记录了isAltPressed", isAltPressed)
+		-- 定时器，如果 0.15 秒内没有再次按下 alt 键，则认为是一次性按下，否则认为是双击
+		timer:start()
 
-    print('记录了isAltPressed', isAltPressed)
-    -- 定时器，如果 0.3 秒内没有再次按下 alt 键，则认为是一次性按下，否则认为是双击
-    timer:start()
+		return false
+	end
 
+	-- 如果是第二次按下 alt 键，则显示菜单
+	if isAltPressed == true and isAltDown == true then
+		isAltPressed = false
+		handleShowMenu()
+		return true
+	end
 
-    return false
-  end
-
-  -- 如果是第二次按下 alt 键，则显示菜单
-  if (isAltPressed == true and isAltDown == true) then
-    isAltPressed = false
-    handleShowMenu()
-    return true
-  end
-
-  -- 48 为 tab，58 为 alt
+	-- 48 为 tab，58 为 alt
 	-- local keyCode = event:getKeyCode()
 
 	-- -- 按下了 alt + tab 后显示菜单
@@ -481,4 +479,3 @@ end
 -- 监听快捷键
 r_keyEvtTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged }, handleKeyEvent)
 r_keyEvtTap:start()
-
