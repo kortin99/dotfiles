@@ -18,7 +18,7 @@ local battery = sbar.add("item", "widgets.battery", {
 local remaining_time = sbar.add("item", {
   position = "popup." .. battery.name,
   icon = {
-    string = "Time remaining:",
+    string = "预估续航:",
     width = 100,
     align = "left"
   },

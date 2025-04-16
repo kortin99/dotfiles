@@ -12,7 +12,7 @@ sbar.default({
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
-		padding_right = settings.paddings,
+		padding_right = 4,
 		background = { image = { corner_radius = 9 } },
 	},
 	label = {
@@ -32,7 +32,7 @@ sbar.default({
 		border_color = colors.transparent,
 		image = {
 			corner_radius = 4,
-			border_color = colors.grey,
+			border_color = colors.red,
 			border_width = 1,
 		},
 	},

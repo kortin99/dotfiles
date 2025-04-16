@@ -8,6 +8,7 @@ local cal = sbar.add("item", {
 	icon = {
 		color = colors.white,
 		padding_left = 8,
+    padding_right = 4,
 		font = {
 			style = settings.font.style_map["Black"],
 			size = 12.0,
@@ -16,16 +17,16 @@ local cal = sbar.add("item", {
 	label = {
 		color = colors.white,
 		padding_right = 8,
-		width = 90,
+		width = 80,
 		align = "right",
 		font = { family = settings.font.numbers },
 	},
 	position = "right",
 	update_freq = 30,
-	padding_left = 1,
-	padding_right = 1,
+	padding_left = settings.paddings,
+	padding_right = settings.paddings,
 	background = {
-		color = colors.bg2,
+		color = colors.bg1,
 		border_width = 1,
 	},
 })
@@ -49,7 +50,7 @@ local getChineseWeekday = function()
 end
 
 cal:subscribe({ "forced", "routine", "system_woke" }, function(env)
-	cal:set({ icon = os.date("%m月%d日 "), label = os.date("%H:%M") .. " " .. getChineseWeekday() })
+	cal:set({ icon = os.date("%m月%d日"), label = os.date("%H:%M") .. " " .. getChineseWeekday() })
 end)
 
 cal:subscribe("mouse.clicked", function(env)
