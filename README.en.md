@@ -1,5 +1,20 @@
-# Kortin does dotfiles
-This is my personal repository for unified configuration management and backup of my macOS development environment.
+<h1 align="center">
+  <br>
+  <img src="./_images/logo.png" alt="" width="100">
+  <br>
+  Kortin does dotfiles
+  <br>
+</h1>
+
+<p align="center">
+  <strong>Your dotfiles are how you personalize your system. These are mine.</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PRs-welcome-%23DA70D6.svg" alt="PRs welcome!" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%23DA70D6">
+</p>
+
 
 ## What's inside
 The directory structure represents configurations for various tools:

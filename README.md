@@ -1,5 +1,20 @@
-# Kortin does dotfiles
-这是我个人的 macOS 开发环境统一配置管理和备份的仓库
+<h1 align="center">
+  <br>
+  <img src="./_images/logo.png" alt="" width="100">
+  <br>
+  Kortin does dotfiles
+  <br>
+</h1>
+
+<p align="center">
+  <strong>这是我个人的 macOS 开发环境统一配置管理和备份的仓库</strong>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PRs-welcome-%23DA70D6.svg" alt="PRs welcome!" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%23DA70D6">
+</p>
+
 
 ## What's inside
 目录结构分别代表各个工具的配置
