@@ -12,7 +12,7 @@ sbar.default({
 		},
 		color = colors.white,
 		padding_left = settings.paddings,
-		padding_right = 4,
+		padding_right = 2,
 		background = { image = { corner_radius = 9 } },
 	},
 	label = {
@@ -46,7 +46,7 @@ sbar.default({
 		},
 		blur_radius = 50,
 	},
-	padding_left = 5,
-	padding_right = 5,
+	padding_left = 2,
+	padding_right = 2,
 	scroll_texts = true,
 })

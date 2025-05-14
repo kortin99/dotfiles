@@ -7,6 +7,8 @@ local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
+local bg_color = "#141414"
+
 local config = {
 
 	-- font
@@ -58,7 +60,7 @@ local config = {
 	window_frame = {
 		font_size = 15.0,
 		active_titlebar_bg = "#151d22",
-		inactive_titlebar_bg = "#151d22",
+		inactive_titlebar_bg = "#111",
 	},
 	animation_fps = 60,
 	max_fps = 60,
@@ -76,11 +78,11 @@ local config = {
 	tab_bar_style = {},
 
 	colors = {
-		background = "#222a2f",
+		background = bg_color,
 
 		tab_bar = {
 			-- background = "#222a2f",
-			background = "#151d22",
+			background = bg_color,
 
 			active_tab = {
 				bg_color = "#222a2f",
@@ -92,7 +94,7 @@ local config = {
 			},
 
 			inactive_tab = {
-				bg_color = "#151d22",
+				bg_color = bg_color,
 				fg_color = "#808080",
 				intensity = "Normal",
 				underline = "None",

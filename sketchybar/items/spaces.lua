@@ -59,7 +59,7 @@ for i = 1, 10, 1 do
 		width = settings.group_paddings,
 	})
 
-  -- 空间预览
+	-- 空间预览
 	local space_popup = sbar.add("item", {
 		position = "popup." .. space.name,
 		padding_left = 5,
@@ -104,23 +104,6 @@ for i = 1, 10, 1 do
 			)
 		end
 	end)
-
-  local mouse_hover = false
-  -- 鼠标悬停时显示空间预览
-  space:subscribe("mouse.entered", function(event)
-    mouse_hover = true
-
-		-- 悬浮 2 秒才展示，避免频繁触发
-    space_popup:set({ background = { image = "space." .. event.SID } })
-    space:set({ popup = { drawing = "toggle" } })
-	end)
-
-	-- 鼠标离开时隐藏空间预览
-	space:subscribe("mouse.exited", function(_)
-    mouse_hover = false
-    print("mouse.exited", mouse_hover)
-		space:set({ popup = { drawing = false } })
-	end)
 end
 
 local space_window_observer = sbar.add("item", {
@@ -157,7 +140,7 @@ space_window_observer:subscribe("space_windows_change", function(event)
 		no_app = false
 		-- local lookup = app_icons[app]
 		-- local icon = ((lookup == nil) and app_icons["default"] or lookup)
-    local icon = app_icons[app] or app_icons["default"] or ""
+		local icon = app_icons[app] or app_icons["default"] or ""
 		icon_line = icon_line .. " " .. icon
 	end
 

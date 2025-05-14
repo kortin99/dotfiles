@@ -60,6 +60,11 @@ local wifi = sbar.add("item", "widgets.wifi.padding", {
   label = { drawing = false },
 })
 
+wifi:subscribe("network_update", function(event)
+  sbar.exec("killall clash_mode.sh >/dev/null; $CONFIG_DIR/helpers/event_providers/clash/clash_mode.sh")
+end)
+
+
 -- Background around the item
 local wifi_bracket = sbar.add("bracket", "widgets.wifi.bracket", {
   wifi.name,
@@ -173,17 +178,45 @@ wifi_up:subscribe("network_update", function(env)
   })
 end)
 
-wifi:subscribe({"wifi_change", "system_woke"}, function(env)
+wifi:subscribe({"wifi_change", "system_woke", "clash_mode_update"}, function(event)
   sbar.exec("ipconfig getifaddr en0", function(ip)
     local connected = not (ip == "")
+    local clash_mode = event.clash_mode and event.clash_mode:gsub('"', '') or "direct"
+
+    local clash_mode_colors = {
+      rule = colors.blue,
+      global = colors.red,
+      script = colors.yellow,
+      direct = colors.white
+    }
+
+    local icon_color = connected and colors.white or colors.grey
+    if connected then
+      icon_color = clash_mode_colors[clash_mode] or colors.white
+    end
+
     wifi:set({
       icon = {
         string = connected and icons.wifi.connected or icons.wifi.disconnected,
-        color = connected and colors.white or colors.red,
+        color = icon_color or colors.white,
       },
     })
   end)
 end)
+
+-- wifi:subscribe("clash_mode_update", function(event)
+--   clash_mode = event.clash_mode
+--   local clash_mode_colors = {
+--     rule = colors.blue,
+--     global = colors.green,
+--     direct = colors.yellow
+--   }
+--   wifi:set({
+--     icon = {
+--       color = clash_mode_colors[clash_mode],
+--     },
+--   })
+-- end)
 
 local function hide_details()
   wifi_bracket:set({ popup = { drawing = false } })

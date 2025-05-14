@@ -383,6 +383,7 @@ export VOLTA_HOME="$XDG_CONFIG_HOME/volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export VOLTA_FEATURE_PNPM=1
 
+
 # npm XDG 目录配置
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
@@ -398,6 +399,9 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# fnm 配置
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # 删除volta指定node版本
 rm-volta-node() {
@@ -471,7 +475,8 @@ test -e "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh" && source "${HOME
 test -e "${HOME}/.config/wezterm/shell/shell_integration.sh" && source "${HOME}/.config/wezterm/shell/shell_integration.sh"
 test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/.config/wezterm/shell/shell_completion.zsh"
 
-
+# starship
+# eval "$(starship init zsh)"
 
 
 
@@ -488,3 +493,10 @@ export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.loc
 eval $(im-select com.apple.keylayout.ABC)
 
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
+# bun completions
+[ -s "/Users/kortin/.bun/_bun" ] && source "/Users/kortin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -12,34 +12,31 @@
 
 [alias]
   st = status
-  cm = commit
-  cmm = commit -m
+  c = commit -m
   cam = commit -am
-  amend = commit --amend
-  camd = commit --amend
-  cmd = commit --amend
+  a = commit --amend
+  an = commit --amend --no-edit
   cp = cherry-pick
   cpx = cherry-pick -x
   br = branch
   co = checkout
-  ck = checkout
   sw = switch
   swc = switch -c
-  sh = stash
+  sh = "! git add . && git stash"
   sp = stash pop
   mr = merge
   mb = merge-base
-  rbi = rebase -i
+  rb = rebase -i
+  undo = reset --soft HEAD^
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ls = log --color --abbrev-commit --pretty=format:'[%C(red)%h%C(reset)] -%C(auto)%d%C(reset) %s %C(blue)(%cr) %C(bold magenta)<%an>%C(reset)'
   lt = ls-tree -r HEAD~ --name-only
 	rss = reset --soft
-	pre = reset --soft HEAD^
   pro = pull -r origin
   pror = pull -r origin release-product
   ui = !lazygit
   lastcommit = !echo "$(git log -1 --pretty=%B)"
-  clone-https = "! [ $# -ne 1 ] && echo 'Args: USERNAME/REPO_NAME' || git clone https://github.com/$1.git"
+  cg = "! [ $# -ne 1 ] && echo 'Args: USERNAME/REPO_NAME' || git clone https://github.com/$1.git"
 	# zsh-git-commit
 	ci = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"ci${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"
 	build = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"build${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"
@@ -122,4 +119,4 @@
 [includeIf "gitdir:/Users/kortin/WorkSpace/GitRepo/"]
 	path = /Users/kortin/WorkSpace/GitRepo/.gitconfig
 [oh-my-zsh]
-	git-commit-alias = f81259fb344685e2dc8b67f8ad8764ccd4e8502e
+	git-commit-alias = a84a0332a822a78ddf3f66d0e1ed3990d4badd12

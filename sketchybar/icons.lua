@@ -8,7 +8,7 @@ local icons = {
 		gear = "􀍟",
 		cpu = "􀫥",
 		ram = "􀫦",
-		clipboard = "􀉄",
+		clipboard = "􀉁",
 
 		switch = {
 			on = "􁏮",

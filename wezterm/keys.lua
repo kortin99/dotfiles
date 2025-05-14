@@ -8,6 +8,7 @@ local modifier = {
 	LEADER = "LEADER",
 	HYPER = "CMD|SHIFT|ALT|CTRL",
 	CMD_SHIFT = "CMD|SHIFT",
+	CMD_ALT = "CMD|ALT",
 }
 
 local keys = {
@@ -74,6 +75,16 @@ local keys = {
 	{
 		key = "l",
 		mods = "CMD|ALT",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "[",
+		mods = modifier.CMD_SHIFT,
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "]",
+		mods = modifier.CMD_SHIFT,
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 

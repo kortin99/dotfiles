@@ -21,10 +21,10 @@ local volume_icon = sbar.add("item", "widgets.volume2", {
 		string = icons.volume._100,
 		width = 0,
 		align = "left",
-		color = colors.grey,
+		color = colors.yellow,
 		font = {
 			style = settings.font.style_map["Regular"],
-			size = 14.0,
+			size = 12.0,
 		},
 	},
 	label = {

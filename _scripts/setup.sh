@@ -29,6 +29,7 @@ create_symlink() {
     fi
 
     ln -s "$src" "$dst"
+    echo "ln -s $src $dst"
     # echo "[] 建立连接"
 
     # if [ $? -eq 0 ]; then
