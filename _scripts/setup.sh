@@ -4,7 +4,8 @@
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 source "$SCRIPT_DIR/../config.sh"
 
-DOTFILES_DIR=$(pwd)
+# 使用绝对路径确保路径正确
+DOTFILES_DIR=$(realpath "$(dirname "$SCRIPT_DIR")")
 
 # 函数：创建符号链接
 create_symlink() {
@@ -15,28 +16,50 @@ create_symlink() {
     dst=${dst/#\~/$HOME}
     # echo -e "\nSymlink $src to $dst ..."
 
-    if [ -e "$dst" ]; then
-        echo -e "\nDestination $dst already exists."
-        read -p "Do you want to overwrite it? (y/N): " OVERRIDE
+    # 检查源文件是否存在
+    if [ ! -e "$src" ]; then
+        echo -e "\n错误：源文件 $src 不存在。"
+        return
+    fi
+
+    # 检查目标目录是否存在，不存在则创建
+    local dst_dir=$(dirname "$dst")
+    if [ ! -d "$dst_dir" ]; then
+        echo "正在创建目录：$dst_dir"
+        mkdir -p "$dst_dir"
+        if [ $? -ne 0 ]; then
+            echo "创建目录 $dst_dir 失败，请检查权限。"
+            return
+        fi
+    fi
+
+    if [ -e "$dst" ] || [ -L "$dst" ]; then  # 检查文件存在或是符号链接
+        echo -e "\n目标 $dst 已存在。"
+        read -p "是否要覆盖？(y/N): " OVERRIDE
 
         if [[ ! $OVERRIDE =~ ^[Yy]$ ]]; then
-            echo -e "Skipped.\n"
+            echo -e "已跳过。\n"
             return
         else
-            # 如果用户选择覆盖，则删除旧的链接或目录
-            rm -rf "$dst"
+            # 如果用户选择覆盖，安全地删除
+            if [ -L "$dst" ] || [ -f "$dst" ]; then
+                rm "$dst"
+            elif [ -d "$dst" ] && [ ! -L "$dst" ]; then
+                echo "警告：$dst 是一个目录，不是符号链接。"
+                read -p "您确定要删除这个目录吗？(y/N): " DELETE_DIR
+                if [[ $DELETE_DIR =~ ^[Yy]$ ]]; then
+                    rm -rf "$dst"
+                else
+                    echo -e "已跳过。\n"
+                    return
+                fi
+            fi
         fi
     fi
 
     ln -s "$src" "$dst"
     echo "ln -s $src $dst"
-    # echo "[] 建立连接"
 
-    # if [ $? -eq 0 ]; then
-    #     echo "成功创建了从 $src 到 $dst 的符号链接。"
-    # else
-    #     echo "创建符号链接失败，请检查路径或权限。"
-    # fi
     if [ $? -ne 0 ]; then
       echo "创建符号链接失败，请检查路径或权限。"
     fi
