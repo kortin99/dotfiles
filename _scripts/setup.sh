@@ -58,7 +58,7 @@ create_symlink() {
     fi
 
     ln -s "$src" "$dst"
-    echo "ln -s $src $dst"
+    # echo "ln -s $src $dst"
 
     if [ $? -ne 0 ]; then
       echo "创建符号链接失败，请检查路径或权限。"

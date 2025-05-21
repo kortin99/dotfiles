@@ -11,8 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/PRs-welcome-%23DA70D6.svg" alt="PRs welcome!" />
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-%23DA70D6">
+  <img alt="License" src="https://img.shields.io/badge/license-GPL-%23DA70D6">
 </p>
 
 
@@ -117,4 +116,4 @@ chmod +x ./install.sh
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL License - see the [LICENSE](LICENSE) file for details.
