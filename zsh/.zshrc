@@ -93,12 +93,12 @@ plugins=(
   tldr # `Esc + tldr` to auto add tldr before the previous command
   # themes # `lstheme` or `theme [name]`
   # thefuck # twice Esc to correct previous command (conflicts with sudo plugin)
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+  # zsh-autosuggestions
+  # zsh-syntax-highlighting
   zsh-interactive-cd
   # z
   zoxide
-  volta
+  # volta
   copypath
   copyfile
 )
@@ -502,3 +502,8 @@ compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# zsh plugins
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
