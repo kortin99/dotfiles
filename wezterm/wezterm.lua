@@ -15,27 +15,18 @@ local config = {
 	font_size = 14,
 	line_height = 1.35,
 	font = wezterm.font_with_fallback({
-		-- {
-		-- 	family = "JetBrainsMono Nerd Font Mono",
-		-- 	weight = "Bold",
-		-- },
-		{
-			family = "DroidSansMono Nerd Font",
+    {
+      family = "DroidSansMono Nerd Font",
 			weight = "Bold",
 		},
-		{
-			family = "PingFang SC",
-			weight = "Bold",
-		},
-
-		{
-			family = "Consolas",
-			weight = "Bold",
-		},
-
-		{
-			family = "SF Pro",
-		},
+    {
+    	family = "JetBrainsMono Nerd Font Mono",
+    	weight = "Bold",
+    },
+    {
+    	family = "Hack Nerd Font",
+    	weight = "Bold",
+    },
 	}),
 	adjust_window_size_when_changing_font_size = false,
 
