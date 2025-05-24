@@ -435,6 +435,8 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 # export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
 # export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
+export PATH=$PATH:/Users/kortin/.local/share/cargo/bin
+
 # Android Studio
 # /Users/kortin/Library/Android/sdk
 
