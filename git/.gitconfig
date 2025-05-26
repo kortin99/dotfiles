@@ -13,6 +13,7 @@
 [alias]
   st = status
   c = commit -m
+  cm = commit -m
   cam = commit -am
   a = commit --amend
   an = commit --amend --no-edit
