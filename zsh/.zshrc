@@ -400,6 +400,13 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# bun completions
+[ -s "/Users/kortin/.bun/_bun" ] && source "/Users/kortin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # fnm 配置
 eval "$(fnm env --use-on-cd --shell zsh)"
 
@@ -491,17 +498,19 @@ test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/
 export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
 export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,23.94.56.114
 
+unset-proxy() {
+  unset http_proxy
+  unset https_proxy
+  unset all_proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  unset ALL_PROXY
+}
+
 # 设置终端默认输入法为英文
 eval $(im-select com.apple.keylayout.ABC)
 
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
-
-# bun completions
-[ -s "/Users/kortin/.bun/_bun" ] && source "/Users/kortin/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 # zsh plugins
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
