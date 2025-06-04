@@ -176,32 +176,26 @@
   {
     "key": "cmd+g a",
     "command": "git.commitAll",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
-    "key": "cmd+g p",
+    "key": "cmd+g shift+p",
     "command": "git.push",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "cmd+g m",
     "command": "git.merge",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
-    "key": "cmd+g shift+p",
+    "key": "cmd+g ctrl+p",
     "command": "git.pushForce",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "cmd+g f",
     "command": "git.pull",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
   {
     "key": "cmd+g s",
     "command": "git.stash",
-    "when": "activeViewlet == 'workbench.view.scm'"
   },
 
   // console.log
@@ -319,7 +313,7 @@
   // 聚焦到资源管理器
   {
     "key": "ctrl+h",
-    "command": "workbench.files.action.focusFilesExplorer",
+    "command": "workbench.action.focusSideBar",
   },
   {
     "key": "ctrl+h",
@@ -330,5 +324,59 @@
     "key": "ctrl+k",
     "command": "-deleteAllRight",
     "when": "textInputFocus && !editorReadonly"
+  },
+
+  // 资源管理器常用操作
+  {
+    "key": "f2",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "-renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+
+  // 编码相关
+  {
+    "key": "cmd+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "workbench.action.tasks.runTask",
+    "when": "taskCommandsRegistered"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+r cmd+i",
+    "command": "-editor.action.showHover",
+    "when": "editorTextFocus"
   }
 ]

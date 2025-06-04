@@ -79,6 +79,40 @@
     {
       "before": ["U"],
       "after": ["C-r"]
+    },
+    // 跳转到问题
+    {
+      "before": ["g", "["],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["g", "]"],
+      "commands": ["editor.action.marker.next"]
+    },
+    // 书签
+    {
+      "before": ["<leader>", "m", "t"],
+      "commands": ["bookmarks.toggle"]
+    },
+    {
+      "before": ["<leader>", "m", "T"],
+      "commands": ["bookmarks.toggleLabeled"]
+    },
+    {
+      "before": ["<leader>", "m", "j"],
+      "commands": ["bookmarks.jumpToPrevious"]
+    },
+    {
+      "before": ["<leader>", "m", "k"],
+      "commands": ["bookmarks.jumpToNext"]
+    },
+    {
+      "before": ["<leader>", "m", "l"],
+      "commands": ["bookmarks.list"]
+    },
+    {
+      "before": ["<leader>", "m", "L"],
+      "commands": ["bookmarks.listFromAllFiles"]
     }
   ],
   "vim.operatorPendingModeKeyBindings": [
