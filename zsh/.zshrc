@@ -150,12 +150,14 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias mv="mv -i"
 alias cd="z"
+alias vim="nvim"
 alias ls="eza --git --icons --color=always --group-directories-first"
 alias tmux="tmux -f ~/.config/tmux/.tmux.conf"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias pnpx="pnpm dlx"
 alias cao="fuck"
 alias "?"="tldr"
+alias "@ai"="ask"
 
 # suffix aliases
 alias -s zip="unzip"
@@ -464,7 +466,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 # x-cmd
-[ ! -f "$HOME/.x-cmd.root/X" ] || . "$HOME/.x-cmd.root/X" # boot up x-cmd.
 
 # bitwarden cli
 export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
