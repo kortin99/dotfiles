@@ -251,7 +251,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Cursor.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Trae.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -264,6 +264,18 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Hyper + Y → Launch Warp Terminal",
+                                "from": {
+                                    "key_code": "y",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Warp.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -303,6 +315,18 @@
                                 "type": "basic"
                             },
                             {
+                                "description": "Hyper + R → Launch Apifox",
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Apifox.app'" }],
+                                "type": "basic"
+                            },
+                            {
                                 "description": "Hyper + Z → Launch Zen Browser",
                                 "from": {
                                     "key_code": "z",
@@ -315,9 +339,9 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "Hyper + W → Launch 企业微信",
+                                "description": "Hyper + Q → Launch 企业微信",
                                 "from": {
-                                    "key_code": "w",
+                                    "key_code": "q",
                                     "modifiers": {
                                         "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
                                         "optional": ["any"]
@@ -327,9 +351,33 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "Hyper + M → Launch 网易云音乐",
+                                "description": "Hyper + W → Launch 微信",
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/WeChat.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Hyper + M → Launch 邮件",
                                 "from": {
                                     "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open -a Mail" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Hyper + N → Launch 网易云音乐",
+                                "from": {
+                                    "key_code": "n",
                                     "modifiers": {
                                         "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
                                         "optional": ["any"]
