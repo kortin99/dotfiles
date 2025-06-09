@@ -378,5 +378,47 @@
     "key": "cmd+r cmd+i",
     "command": "-editor.action.showHover",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+cmd+b",
+    "command": "workbench.action.tasks.build",
+    "when": "taskCommandsRegistered"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "-workbench.action.tasks.build",
+    "when": "taskCommandsRegistered"
+  },
+  {
+    "key": "alt+cmd+k",
+    "command": "-bookmarks.toggle",
+    "when": "editorTextFocus"
+  },
+
+  // 括号跳转
+  {
+    "key": "shift+cmd+9",
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "-editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+0",
+    "command": "editor.action.jumpToBracket",
+    "when": "editorTextFocus"
+  },
+
+  // 分屏
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.splitEditor"
+  },
+  {
+    "key": "shift+cmd+\\",
+    "command": "workbench.action.splitEditorDown"
   }
 ]

@@ -90,14 +90,14 @@ local keys = {
 
 	-- 窗格分屏
 	{
-		key = "d",
+		key = "\\",
 		mods = modifier.CMD,
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "D",
+		key = "\\",
 		mods = modifier.CMD_SHIFT,
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "w",
