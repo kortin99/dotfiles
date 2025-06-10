@@ -158,6 +158,7 @@ alias pnpx="pnpm dlx"
 alias cao="fuck"
 alias "?"="tldr"
 alias "@ai"="ask"
+alias c="cursor"
 
 # suffix aliases
 alias -s zip="unzip"
