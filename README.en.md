@@ -1,3 +1,7 @@
+<p align="left">
+  <a href="./README.md">中文</a> | English
+<p>
+
 <h1 align="center">
   <br>
   <img src="./_images/logo.png" alt="" width="100">
@@ -15,23 +19,25 @@
   <img alt="License" src="https://img.shields.io/badge/license-GPL-%23DA70D6">
 </p>
 
-
 ## What's inside
+
 The directory structure represents configurations for various tools:
- - **git**: Git-related configurations and my commonly used aliases
- - **zsh**: Zsh shell configuration files, including plugins, aliases, and custom functions
- - **karabiner**: Karabiner-Elements keyboard customization configuration
- - **hammerspoon**: Hammerspoon automation scripts and configuration
- - **iterm2**: iTerm2 terminal emulator configuration and scripts
- - **sketchybar**: macOS status bar customization configuration
- - **nvim**: Neovim editor configuration
- - **wezterm**: WezTerm terminal emulator configuration
- - **lazygit**: LazyGit terminal Git client configuration
- - **yabai**: Yabai window manager configuration
- - **vscode**: Visual Studio Code editor configuration
- - **tmux**: Tmux terminal multiplexer configuration
+
+- **git**: Git-related configurations and my commonly used aliases
+- **zsh**: Zsh shell configuration files, including plugins, aliases, and custom functions
+- **karabiner**: Karabiner-Elements keyboard customization configuration
+- **hammerspoon**: Hammerspoon automation scripts and configuration
+- **iterm2**: iTerm2 terminal emulator configuration and scripts
+- **sketchybar**: macOS status bar customization configuration
+- **nvim**: Neovim editor configuration
+- **wezterm**: WezTerm terminal emulator configuration
+- **lazygit**: LazyGit terminal Git client configuration
+- **yabai**: Yabai window manager configuration
+- **vscode**: Visual Studio Code editor configuration
+- **tmux**: Tmux terminal multiplexer configuration
 
 ### Git
+
 - Uses Delta as diff and merge tool
 - Function-style aliases for various git commit types (feat, fix, docs, style, etc.)
 - Simplified aliases for common commands (st, c, cm, co, br, etc.)
@@ -41,6 +47,7 @@ The directory structure represents configurations for various tools:
 - Configuration suitable for multiple workspaces
 
 ### zsh
+
 - Based on Oh My Zsh framework
 - Uses wedisagree theme
 - Rich plugin collection:
@@ -59,38 +66,48 @@ The directory structure represents configurations for various tools:
   - Automatic actions based on file suffixes
 
 ### Sketchybar
+
 Since I'm accustomed to using macOS multiple desktops for development, with different applications open on each desktop, I need to know which desktop I'm currently on and what apps are open. macOS's native system obviously doesn't support this feature.
 
 My core need for Sketchybar is to fill this gap. At the same time, I can customize some real-time system resource monitoring, as well as any features I need.
 <img src="./_images/sketchybar.png" />
 
 Sketchybar uses Lua configuration and includes the following main components:
+
 - Desktop space indicators
 - System resource monitoring (CPU, memory, battery)
 - Display of currently running application icons
 - Volume and time display
 
 ### Yabai
+
 Yabai is a highly customizable window manager that provides tiling window management functionality for macOS:
+
 - Automatically arranges windows to efficiently utilize screen space
 - Quick keyboard navigation to switch between windows and desktops
 - Custom window rules and layouts
 - Integration with skhd shortcut key daemon
 
 ### hammerspoon
+
 Currently there are only two scripts:
+
 - Automatically mutes Mac after connecting to company intranet Wi-Fi
 - Double-click Alt to pop up an application ring for quick access to commonly used apps
   <img src="./_images/hammerspoon-ring.gif" />
 
 ### Karabiner-Elements
+
 Keyboard customization configurations include:
+
 - Modifying key bindings and behaviors
 - Custom keyboard mappings for specific applications
 - Complex modifier key combinations
 
 ### iTerm2 & WezTerm
+
 Configurations for two advanced terminal emulators:
+
 - Color schemes and font settings
 - Hotkey window configuration
 - Shell integration features
@@ -99,20 +116,27 @@ Configurations for two advanced terminal emulators:
 ## How to use
 
 ### Automatic Configuration
+
 1. `cd` to the current project, grant read, write, and execute permissions to `install.sh`
+
 ```shell
 chmod +x ./install.sh
 ```
+
 2. Symlink configuration files to the corresponding system locations
+
 ```shell
 ./install.sh setup
 ```
+
 3. To update configurations, you can run
+
 ```shell
 ./install.sh backup
 ```
 
 ### Manual Configuration
+
 Simply copy the configuration parts you need to the corresponding configuration files
 
 ## License
