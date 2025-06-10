@@ -486,6 +486,22 @@ test -e "${HOME}/.config/iterm2/.iterm2_shell_integration.zsh" && source "${HOME
 test -e "${HOME}/.config/wezterm/shell/shell_integration.sh" && source "${HOME}/.config/wezterm/shell/shell_integration.sh"
 test -e "${HOME}/.config/wezterm/shell/shell_completion.zsh" && source "${HOME}/.config/wezterm/shell/shell_completion.zsh"
 
+if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+  function update_wezterm_tab_title() {
+    local dir_name
+    if [[ "$PWD" == "$HOME" ]]; then
+      dir_name="~"
+    else
+      dir_name=$(basename "$PWD")
+    fi
+    wezterm cli set-tab-title "$dir_name"
+  }
+
+  autoload -U add-zsh-hook
+  add-zsh-hook chpwd update_wezterm_tab_title
+  update_wezterm_tab_title
+fi
+
 # starship
 # eval "$(starship init zsh)"
 

@@ -8,6 +8,7 @@ local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 local bg_color = "#141414"
+local tab_bar_color = "#171d21"
 
 local config = {
 
@@ -15,25 +16,25 @@ local config = {
 	font_size = 14,
 	line_height = 1.35,
 	font = wezterm.font_with_fallback({
-    {
-      family = "DroidSansMono Nerd Font",
+		{
+			family = "DroidSansMono Nerd Font",
 			weight = "Bold",
 		},
-    {
-    	family = "JetBrainsMono Nerd Font Mono",
-    	weight = "Bold",
-    },
-    {
-    	family = "Hack Nerd Font",
-    	weight = "Bold",
-    },
+		{
+			family = "JetBrainsMono Nerd Font Mono",
+			weight = "Bold",
+		},
+		{
+			family = "Hack Nerd Font",
+			weight = "Bold",
+		},
 	}),
 	adjust_window_size_when_changing_font_size = false,
 
 	-- theme
 	color_scheme = "Catppuccin Mocha",
 	window_background_opacity = 1,
-	macos_window_background_blur = 90,
+	macos_window_background_blur = 99,
 	text_background_opacity = 1,
 
 	-- cursor
@@ -59,24 +60,53 @@ local config = {
 	webgpu_power_preference = "HighPerformance",
 
 	-- tab bar
-	use_fancy_tab_bar = false,
+	use_fancy_tab_bar = true,
 	tab_bar_at_bottom = true,
 	hide_tab_bar_if_only_one_tab = true,
 	show_new_tab_button_in_tab_bar = false,
-	-- show_close_tab_button_in_tabs = true,
+	-- show_close_tab_button_in_tabs = false, -- not support yet
 	tab_and_split_indices_are_zero_based = false,
 
-	tab_bar_style = {},
+	tab_bar_style = {
+		active_tab_left = wezterm.format({
+			{ Background = { Color = "#0b0022" } },
+			{ Foreground = { Color = "#2b2042" } },
+			{ Text = SOLID_LEFT_ARROW },
+		}),
+		active_tab_right = wezterm.format({
+			{ Background = { Color = "#0b0022" } },
+			{ Foreground = { Color = "#2b2042" } },
+			{ Text = SOLID_RIGHT_ARROW },
+		}),
+		inactive_tab_left = wezterm.format({
+			{ Background = { Color = "#0b0022" } },
+			{ Foreground = { Color = "#1b1032" } },
+			{ Text = SOLID_LEFT_ARROW },
+		}),
+		inactive_tab_right = wezterm.format({
+			{ Background = { Color = "#0b0022" } },
+			{ Foreground = { Color = "#1b1032" } },
+			{ Text = SOLID_RIGHT_ARROW },
+		}),
+	},
 
 	colors = {
 		background = bg_color,
 
+		window_frame = {
+			active_titlebar_bg = bg_color,
+			inactive_titlebar_bg = bg_color,
+			-- active_titlebar_fg = "#c0c0c0",
+			-- inactive_titlebar_fg = "#808080",
+			button_bg = "#ff0000",
+		},
+
 		tab_bar = {
-			-- background = "#222a2f",
 			background = bg_color,
 
 			active_tab = {
-				bg_color = "#222a2f",
+				-- bg_color = "#222a2f",
+				bg_color = bg_color,
 				fg_color = "#c0c0c0",
 				intensity = "Bold",
 				underline = "None",
@@ -85,7 +115,7 @@ local config = {
 			},
 
 			inactive_tab = {
-				bg_color = bg_color,
+				bg_color = tab_bar_color,
 				fg_color = "#808080",
 				intensity = "Normal",
 				underline = "None",
@@ -99,6 +129,8 @@ local config = {
 				italic = true,
 			},
 
+			inactive_tab_edge = tab_bar_color,
+
 			new_tab = {
 				bg_color = "#1b1032",
 				fg_color = "#808080",
@@ -110,6 +142,17 @@ local config = {
 				italic = true,
 			},
 		},
+	},
+
+	window_background_gradient = {
+		orientation = "Vertical",
+		colors = {
+			bg_color,
+			"#14222A",
+			tab_bar_color,
+		},
+		interpolation = "Linear",
+		blend = "Rgb",
 	},
 }
 

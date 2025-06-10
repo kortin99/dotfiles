@@ -59,9 +59,14 @@ local keys = {
 
 	-- Tab操作
 	{
-		key = "t",
+		key = "n",
 		mods = modifier.CMD,
 		action = wezterm.action.SpawnTab("DefaultDomain"),
+	},
+	{
+		key = "n",
+		mods = modifier.CMD_SHIFT,
+		action = wezterm.action.SpawnWindow,
 	},
 	{
 		key = "w",
