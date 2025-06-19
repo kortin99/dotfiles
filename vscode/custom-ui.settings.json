@@ -1,44 +1,13 @@
 {
   // 需要安装插件：Custom UI Style、VScode Animations
-  "breadcrumbs.enabled": false,
-  "animations.Install-Method": "Custom UI Style",
-  "animations.Default-Duration": 100,
-  "animations.Tabs": "Slide",
-  "animations.Scrolling": "Slide",
   "animations.Active": "Indent",
-  "animations.UseCursorColorForCursorAnimation": true,
   "animations.CursorAnimation": true,
-  "editor.quickSuggestions": {
-    "other": "off"
-  },
-  "editor.tabCompletion": "on",
-  "helium-icon-theme.hidesExplorerArrows": true,
-  "workbench.tree.renderIndentGuides": "none",
-  "workbench.tree.indent": 18,
-  "workbench.activityBar.location": "top",
-  "window.zoomLevel": 0.6,
-  "diffEditor.hideUnchangedRegions.enabled": true,
-  "editor.accessibilitySupport": "off",
-  "editor.autoClosingDelete": "always",
-  "editor.autoClosingOvertype": "always",
-  "editor.cursorBlinking": "expand",
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.defaultColorDecorators": "auto",
-  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospaceb, 'Symbols Nerd Font Mono'",
-  "editor.fontSize": 14,
-  "editor.lineHeight": 2,
-  "editor.lineNumbers": "relative",
-  "editor.renderWhitespace": "trailing",
-  "editor.smoothScrolling": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.tabSize": 2,
-  "editor.wordWrap": "on",
-  "editor.wordWrapColumn": 120, 
-  "explorer.compactFolders": false,
-  "files.autoSave": "onFocusChange",
-  "custom-ui-style.external.imports": [
-    "" // VSCode Animations 的样式或脚本
-  ],
+  "animations.Default-Duration": 100,
+  "animations.Install-Method": "Custom UI Style",
+  "animations.Scrolling": "Slide",
+  "animations.Tabs": "Slide",
+  "animations.UseCursorColorForCursorAnimation": true,
+  "breadcrumbs.enabled": false,
   "custom-ui-style.electron": {
     "titleBarStyle": "hiddenInset",
     "trafficLightPosition": {
@@ -46,6 +15,9 @@
       "y": 16
     }
   },
+  "custom-ui-style.external.imports": [
+    "" // VSCode Animations 的样式或脚本
+  ],
   "custom-ui-style.stylesheet": {
     // 查找小组件铺满编辑器宽度，
     ".editor-widget.find-widget": "border-radius: 4px; width: calc(100% + 30px) !important; right: 0 !important;",
@@ -53,30 +25,97 @@
     ".monaco-action-bar.quick-input-inline-action-bar": "display: none",
     // 鼠标光标渐变颜色
     ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #ffaffc 10%, #DA70D6 100%)",
-    // 顶部 tabs 让出红绿灯的位置，并禁用滚动条
-    ".tabs-and-actions-container": "margin-left: 68px",
-    ".tabs-and-actions-container .scrollbar.horizontal": "display: none;",
-    // Cursor 的侧边栏顶部分类
-    ".sidebar.left > div > div > div:nth-of-type(1) > div > div": "margin-left: 58px; width: calc(100% - 60px); justify-content: flex-start !important",
-    // 代码粘滞适配查找和替换小组件
-    ".overlayWidgets:has(.editor-widget.find-widget.visible) .sticky-widget": "top: 33px !important",
-    ".overlayWidgets:has(.editor-widget.find-widget.visible.replaceToggled) .sticky-widget": "top: 62px !important",
+    ".monaco-editor .editor-scrollable > .decorationsOverviewRuler": "width: 4px !important",
+    // 改变编辑器滚动条宽度
+    ".monaco-editor .editor-scrollable > .scrollbar.horizontal": "height: 4px !important",
+    ".monaco-editor .editor-scrollable > .scrollbar.vertical": "width: 4px !important",
     // 资源管理器聚焦文件的边框
     ".monaco-list-row.focused": "outline: none !important",
     ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
     ".monaco-workbench .part.editor > .content .editor-group-container > .title.title-border-bottom:after": "display: none",
-    // 命令中心小组件居中
-    ".quick-input-widget": "top: 25vh !important",
+    // 代码粘滞适配查找和替换小组件
+    ".overlayWidgets:has(.editor-widget.find-widget.visible) .sticky-widget": "top: 33px !important",
+    ".overlayWidgets:has(.editor-widget.find-widget.visible.replaceToggled) .sticky-widget": "top: 62px !important",
     ".quick-input-list .scrollbar": "width: 2px !important",
     ".quick-input-titlebar": "background: #100B15 !important",
+    // 命令中心小组件居中
+    ".quick-input-widget": "top: 25vh !important",
     // 隐藏侧边栏的面板分割线
     ".sidebar": "border: none !important",
+    // Cursor 的侧边栏顶部分类
+    ".sidebar.left > div > div > div:nth-of-type(1) > div > div": "margin-left: 58px; width: calc(100% - 60px); justify-content: flex-start !important",
+    // 顶部 tabs 让出红绿灯的位置，并禁用滚动条
+    ".tabs-and-actions-container": "margin-left: 68px",
+    ".tabs-and-actions-container .scrollbar.horizontal": "display: none;",
     ".title .monaco-icon-label.file-icon": "margin: 0 20px",
     ".title .monaco-icon-label:after": "margin-right: 0",
-    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "justify-content: center; padding: 0 !important",
-    // 改变编辑器滚动条宽度
-    ".monaco-editor .editor-scrollable > .scrollbar.horizontal": "height: 4px !important",
-    ".monaco-editor .editor-scrollable > .scrollbar.vertical": "width: 4px !important",
-    ".monaco-editor .editor-scrollable > .decorationsOverviewRuler": "width: 4px !important"
-  }
+    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "justify-content: center; padding: 0 !important"
+  },
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingDelete": "always",
+  "editor.autoClosingOvertype": "always",
+  "editor.codeLens": false,
+  "editor.colorDecorators": false,
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.defaultColorDecorators": "auto",
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospaceb, 'SF Symbols'",
+  "editor.fontSize": 14,
+  "editor.guides.indentation": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "editor.hover.enabled": true,
+  "editor.lightbulb.enabled": "off",
+  "editor.lineHeight": 2,
+  "editor.lineNumbers": "relative",
+  "editor.links": false,
+  "editor.matchBrackets": "near",
+  "editor.minimap.enabled": false,
+  "editor.occurrencesHighlight": "off",
+  "editor.overviewRulerBorder": false,
+  "editor.parameterHints.enabled": false,
+  "editor.quickSuggestions": {
+    "other": "off"
+  },
+  "editor.renderLineHighlight": "none",
+  "editor.renderWhitespace": "trailing",
+  "editor.scrollbar.horizontal": "auto",
+  "editor.scrollbar.vertical": "auto",
+  "editor.selectionHighlight": false,
+  "editor.showFoldingControls": "mouseover",
+  "editor.smoothScrolling": true,
+  "editor.snippetSuggestions": "top",
+  "editor.stickyScroll.enabled": true,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.decorations.badges": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "helium-icon-theme.hidesExplorerArrows": true,
+  "material-icon-theme.hidesExplorerArrows": true,
+  "window.autoDetectColorScheme": true,
+  "window.customTitleBarVisibility": "never",
+  "window.newWindowProfile": "默认",
+  "window.titleBarStyle": "native",
+  "window.zoomLevel": 1.4,
+  "workbench.activityBar.location": "top",
+  "workbench.editor.limit.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.list.smoothScrolling": true,
+  "workbench.navigationControl.enabled": false,
+  "workbench.preferredDarkColorTheme": "Kortin Theme Fantasy (immersive)",
+  "workbench.preferredLightColorTheme": "Kortin Theme Fantasy (immersive)",
+  "workbench.productIconTheme": "icons-carbon",
+  // "workbench.editor.showTabs": "single",
+  "workbench.statusBar.visible": true,
+  "workbench.tips.enabled": false,
+  "workbench.tree.enableStickyScroll": true,
+  "workbench.tree.indent": 8,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.view.alwaysShowHeaderActions": false
 }
