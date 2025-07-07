@@ -67,39 +67,8 @@ local config = {
 	-- show_close_tab_button_in_tabs = false, -- not support yet
 	tab_and_split_indices_are_zero_based = false,
 
-	tab_bar_style = {
-		active_tab_left = wezterm.format({
-			{ Background = { Color = "#0b0022" } },
-			{ Foreground = { Color = "#2b2042" } },
-			{ Text = SOLID_LEFT_ARROW },
-		}),
-		active_tab_right = wezterm.format({
-			{ Background = { Color = "#0b0022" } },
-			{ Foreground = { Color = "#2b2042" } },
-			{ Text = SOLID_RIGHT_ARROW },
-		}),
-		inactive_tab_left = wezterm.format({
-			{ Background = { Color = "#0b0022" } },
-			{ Foreground = { Color = "#1b1032" } },
-			{ Text = SOLID_LEFT_ARROW },
-		}),
-		inactive_tab_right = wezterm.format({
-			{ Background = { Color = "#0b0022" } },
-			{ Foreground = { Color = "#1b1032" } },
-			{ Text = SOLID_RIGHT_ARROW },
-		}),
-	},
-
 	colors = {
 		background = bg_color,
-
-		window_frame = {
-			active_titlebar_bg = bg_color,
-			inactive_titlebar_bg = bg_color,
-			-- active_titlebar_fg = "#c0c0c0",
-			-- inactive_titlebar_fg = "#808080",
-			button_bg = "#ff0000",
-		},
 
 		tab_bar = {
 			background = bg_color,

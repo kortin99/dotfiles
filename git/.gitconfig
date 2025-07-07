@@ -120,4 +120,4 @@
 [includeIf "gitdir:/Users/kortin/WorkSpace/GitRepo/"]
 	path = /Users/kortin/WorkSpace/GitRepo/.gitconfig
 [oh-my-zsh]
-	git-commit-alias = 788eaa5930eeafceb0cc43f338b0bacf7a2e36a8
+	git-commit-alias = f8022980a3423f25e3d5e1b6a60d2372a2ba006b
