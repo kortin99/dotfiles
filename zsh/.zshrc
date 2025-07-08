@@ -112,6 +112,10 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
 
+if [ -f "$HOME/keys.zsh" ]; then
+  source "$HOME/keys.zsh"
+fi
+
 # 默认编辑器
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
