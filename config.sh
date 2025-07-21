@@ -11,5 +11,5 @@ CONFIGS=(
     "git/.gitconfig                ~/.gitconfig"
     "hammerspoon                   ~/.hammerspoon"
     "starship/starship.toml        ~/.config/starship.toml"
-    "surfingkeys/.surfingkeys.js   ~/.surfingkeys.js"
+    "surfingkeys/surfingkeys.js   ~/.surfingkeys.js"
 )
