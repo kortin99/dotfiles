@@ -134,7 +134,6 @@ local key_tables = {
 
 return {
 	disable_default_key_bindings = false,
-	disable_default_mouse_bindings = false,
 	-- leader = { key = "Space", mods = modifier.CMD_SHIFT },
 	leader = { key = "Space", mods = modifier.CTRL_ALT },
 	keys = keys,

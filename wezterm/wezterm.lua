@@ -17,7 +17,7 @@ local config = {
 	line_height = 1.35,
 	font = wezterm.font_with_fallback({
 		{
-			family = "DroidSansMono Nerd Font",
+			family = "DroidSansM Nerd Font Mono",
 			weight = "Bold",
 		},
 		{
@@ -125,6 +125,13 @@ local config = {
 	},
 }
 
+-- 超链接规则配置
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+table.insert(config.hyperlink_rules, {
+	regex = 'http://localhost:3000',
+	format = "$1",
+})
+
 -- ssh
 config.ssh_domains = {
 	{
@@ -140,9 +147,6 @@ config.ssh_domains = {
 	},
 }
 
---keys
-config.keys = {}
-
 -- Notification when the configuration is reloaded
 local function toast(window, message)
 	window:toast_notification("wezterm", message .. " - " .. os.date("%I:%M:%S %p"), nil, 1000)
@@ -152,4 +156,4 @@ wezterm.on("window-config-reloaded", function(window, pane)
 	toast(window, "Configuration reloaded!")
 end)
 
-return merge(config, require("keys"))
+return merge(config, require("keys"), require("mouse"))
