@@ -29,33 +29,33 @@
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["j"],
-      "after": ["g", "j"]
+      "after": ["g", "j"],
+      "before": ["j"]
     },
     {
-      "before": ["k"],
-      "after": ["g", "k"]
+      "after": ["g", "k"],
+      "before": ["k"]
     },
     {
-      "before": ["J"],
-      "after": ["1", "0", "j"]
+      "after": ["1", "0", "j"],
+      "before": ["J"]
     },
     {
-      "before": ["K"],
-      "after": ["1", "0", "k"]
+      "after": ["1", "0", "k"],
+      "before": ["K"]
     },
     {
-      "before": ["H"],
-      "after": ["^"]
+      "after": ["^"],
+      "before": ["H"]
     },
     {
-      "before": ["L"],
-      "after": ["g", "_"]
+      "after": ["g", "_"],
+      "before": ["L"]
     },
     // normal 模式下 Y 复制整行到系统剪切板
     {
-      "before": ["Y"],
-      "after": ["\"", "+", "y", "y"]
+      "after": ["\"", "+", "y", "y"],
+      "before": ["Y"]
     },
     {
       "before": ["<leader>", "c", "f"],
@@ -75,10 +75,15 @@
       "before": ["<leader>", "r", "n"],
       "commands": ["editor.action.rename"]
     },
+    // 在当前文件查找
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["fuzzySearch.activeTextEditorWithCurrentSelection"]
+    },
     // redo
     {
-      "before": ["U"],
-      "after": ["C-r"]
+      "after": ["C-r"],
+      "before": ["U"]
     },
     // 跳转到问题
     {
@@ -88,56 +93,44 @@
     {
       "before": ["g", "]"],
       "commands": ["editor.action.marker.next"]
-    },
-    // 书签
-    {
-      "before": ["<leader>", "m", "t"],
-      "commands": ["bookmarks.toggle"]
-    },
-    {
-      "before": ["<leader>", "m", "T"],
-      "commands": ["bookmarks.toggleLabeled"]
-    },
-    {
-      "before": ["<leader>", "m", "j"],
-      "commands": ["bookmarks.jumpToPrevious"]
-    },
-    {
-      "before": ["<leader>", "m", "k"],
-      "commands": ["bookmarks.jumpToNext"]
-    },
-    {
-      "before": ["<leader>", "m", "l"],
-      "commands": ["bookmarks.list"]
-    },
-    {
-      "before": ["<leader>", "m", "L"],
-      "commands": ["bookmarks.listFromAllFiles"]
     }
   ],
   "vim.operatorPendingModeKeyBindings": [
     {
-      "before": ["L"],
-      "after": ["g", "_"]
+      "after": ["g", "_"],
+      "before": ["L"]
     },
     {
-      "before": ["H"],
-      "after": ["^"]
+      "after": ["^"],
+      "before": ["H"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     // visual 模式中 Y 复制当前已选内容到系统剪切板
     {
-      "before": ["Y"],
-      "after": ["\"", "+", "y"]
+      "after": ["\"", "+", "y"],
+      "before": ["Y"]
     },
     {
-      "before": ["j"],
-      "after": ["g", "j"]
+      "after": ["g", "j"],
+      "before": ["j"]
     },
     {
-      "before": ["k"],
-      "after": ["g", "k"]
+      "after": ["g", "k"],
+      "before": ["k"]
+    },
+    {
+      "after": ["g", "_"],
+      "before": ["L"]
+    },
+    {
+      "after": ["^"],
+      "before": ["H"]
+    },
+    // 在当前文件查找选中的文本
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["fuzzySearch.activeTextEditorWithCurrentSelection"]
     }
   ]
 }
