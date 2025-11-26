@@ -12,35 +12,29 @@ gui:
   showBottomLine: false
   nerdFontsVersion: '3'
   border: 'single'
-
 git:
   log:
     showGraph: 'always'
   parseEmoji: true
-
 customCommands:
   - key: 'C'
     command: 'clear && git cz c'
     description: 'Commit with commitizen'
     context: 'files'
     loadingText: 'opening commitizen commit tool'
-    subprocess: true
-
+    output: terminal
   - key: '<c-s>'
     command: 'git save'
     description: 'Create savepoint commit'
     context: 'files'
-
   - key: 'u'
     command: 'git undo'
     description: 'Undo last commit'
     context: 'files'
-
   - key: 'u'
     command: 'git undo'
     description: 'Undo last commit'
     context: 'commits'
-
   - key: '<c-v>'
     context: 'global'
     description: 'Create a new conventional commit'

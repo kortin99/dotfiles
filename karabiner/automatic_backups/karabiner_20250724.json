@@ -297,7 +297,7 @@
                         ]
                     },
                     {
-                        "description": "Hyper + letter → launch apps",
+                        "description": "Hyper + letter launch apps",
                         "manipulators": [
                             {
                                 "description": "Hyper + A → Launch Arc Browser",
@@ -324,7 +324,7 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "Hyper + C → Launch Visual Studio Code",
+                                "description": "Hyper + C → Launch VSCode",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
@@ -368,7 +368,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/iAPI.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Apifox.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -408,9 +408,9 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "Hyper + 2(@) → Launch 邮件",
+                                "description": "Hyper + M → Launch 邮件",
                                 "from": {
-                                    "key_code": "2",
+                                    "key_code": "m",
                                     "modifiers": {
                                         "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
                                         "optional": ["any"]
@@ -429,18 +429,6 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/NeteaseMusic.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Hyper + = → Launch Cherry Studio",
-                                "from": {
-                                    "key_code": "equal_sign",
-                                    "modifiers": {
-                                        "mandatory": ["left_shift", "left_command", "left_control", "left_option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Cherry Studio.app'" }],
                                 "type": "basic"
                             }
                         ]

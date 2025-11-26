@@ -122,7 +122,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   # export EDITOR='nvim'
   # export EDITOR='trae'
-  export EDITOR='cursor'
+  export EDITOR='code'
 fi
 
 # Compilation flags
@@ -162,7 +162,9 @@ alias pnpx="pnpm dlx"
 alias cao="fuck"
 alias "?"="tldr"
 alias "@ai"="ask"
-alias c="cursor"
+alias cr="cursor"
+alias copy="pbcopy"
+alias cpy="pbcopy"
 
 # suffix aliases
 alias -s zip="unzip"
@@ -516,9 +518,17 @@ fi
 ########################  环境  #########################
 ########################################################
 
+bundle-id() {
+    local app_name="$1"
+    osascript -e "id of app \"$app_name\""
+}
+
 # 使用系统代理
-export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
-export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,23.94.56.114
+set-proxy() {
+    # export https_proxy=http://127.0.0.1:17890 http_proxy=http://127.0.0.1:17890 all_proxy=socks5://127.0.0.1:17890
+    export http_proxy=http://agent.baidu.com:8891 https_proxy=http://agent.baidu.com:8891
+    export no_proxy=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,127.0.0.1,localhost,.local,timestamp.apple.com,sequoia.apple.com,seed-sequoia.siri.apple.com,.ly.com,.elong.com,.17usoft.com,.17u.cn,.40017.cn,.tcent.cn,.hopegoo.com,.azgotrip.net,.elonghotel.com,.bigdata.com,.handhand.net,.tsinghua.edu.cn,baidu-int.com,baidu.com
+}
 
 unset-proxy() {
   unset http_proxy
@@ -530,7 +540,7 @@ unset-proxy() {
 }
 
 # 设置终端默认输入法为英文
-eval $(im-select com.apple.keylayout.ABC)
+# eval $(im-select com.apple.keylayout.ABC)
 
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
@@ -539,3 +549,12 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /opt/homebrew/share/fzf-tab/fzf-tab.plugin.zsh
+
+# icafe cli
+export PATH="$HOME/.icafe/bin:$PATH"
+
+# Added by Comate
+export PATH="/Users/kortin/.comate/bin:$PATH"
+
+# Added by DuCC (symlink)
+export PATH="/Users/kortin/.comate/baidu-cc/bin:$PATH"
