@@ -37,11 +37,11 @@
       "before": ["k"]
     },
     {
-      "after": ["1", "0", "j"],
+      "after": ["5", "j"],
       "before": ["J"]
     },
     {
-      "after": ["1", "0", "k"],
+      "after": ["5", "k"],
       "before": ["K"]
     },
     {
@@ -70,6 +70,15 @@
       "before": ["m", "k"],
       "commands": ["editor.action.moveLinesUpAction"]
     },
+    // indent/outdent
+    {
+      "before": ["<tab>"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["editor.action.outdentLines"]
+    },
     // 变量重命名
     {
       "before": ["<leader>", "r", "n"],
@@ -94,6 +103,14 @@
       "before": ["g", "]"],
       "commands": ["editor.action.marker.next"]
     }
+    // {
+    //     "before": [
+    //         "<Esc>"
+    //     ],
+    //     "commands": [
+    //         "closeFindWidget"
+    //     ]
+    // },
   ],
   "vim.operatorPendingModeKeyBindings": [
     {
@@ -123,14 +140,32 @@
       "after": ["g", "_"],
       "before": ["L"]
     },
+    // 光标的前进后退
     {
-      "after": ["^"],
-      "before": ["H"]
+      "commands": ["workbench.action.navigateBack"],
+      "before": ["g", ","]
+    },
+    {
+      "after": ["g", "."],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["k"]
     },
     // 在当前文件查找选中的文本
     {
       "before": ["<leader>", "f"],
       "commands": ["fuzzySearch.activeTextEditorWithCurrentSelection"]
+    },
+    // indent/outdent
+    {
+      "before": ["<tab>"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["editor.action.outdentLines"]
     }
   ]
 }
