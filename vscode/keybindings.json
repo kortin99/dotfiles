@@ -15,7 +15,6 @@
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "viewContainer.workbench.view.explorer.enabled && explorerViewletVisible"
   },
-
   // 左侧面板快速切换 - git
   {
     "key": "shift+cmd+g",
@@ -42,7 +41,6 @@
     "command": "-workbench.view.scm",
     "when": "workbench.scm.active"
   },
-
   // 快速打开内置终端
   {
     "key": "cmd+j",
@@ -58,29 +56,26 @@
     "key": "cmd+j",
     "command": "-workbench.action.togglePanel"
   },
-
-    // 新增/删除终端实例
-    {
-      "key": "cmd+t",
-      "command": "workbench.action.terminal.new",
-      "when": "terminalFocus && (terminalProcessSupported || terminalWebExtensionContributedProfile)"
-    },
-    {
-      "key": "cmd+w t",
-      "command": "workbench.action.terminal.kill",
-      "when": "terminalHasBeenCreated || terminalIsOpen || terminalProcessSupported"
-    },
-
-    // 切换终端面板最大化
-    {
-      "key": "ctrl+cmd+m",
-      "command": "workbench.action.toggleMaximizedPanel"
-    },
-    {
-      "key": "ctrl+cmd+t",
-      "command": "-tailwind-documentation.search"
-    },
-
+  // 新增/删除终端实例
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && (terminalProcessSupported || terminalWebExtensionContributedProfile)"
+  },
+  {
+    "key": "cmd+w t",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalHasBeenCreated || terminalIsOpen || terminalProcessSupported"
+  },
+  // 切换终端面板最大化
+  {
+    "key": "ctrl+cmd+m",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "-tailwind-documentation.search"
+  },
   // 禁用 mac 的 cmd+h 隐藏窗口，并替换成 vscode 的查找替换
   {
     "key": "cmd+h",
@@ -92,7 +87,6 @@
     "command": "-editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
   },
-
   // 快速切换当前打开的 Tab
   {
     "key": "cmd+e",
@@ -105,6 +99,11 @@
     "when": "inEditorsPicker && inQuickOpen"
   },
   {
+    "key": "shift+cmd+e",
+    "command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
+    "when": "inEditorsPicker && inQuickOpen"
+  },
+  {
     "key": "cmd+e",
     "command": "-actions.findWithSelection"
   },
@@ -113,7 +112,6 @@
     "command": "workbench.action.showEditorsInActiveGroup",
     "when": "inEditorsPicker"
   },
-
   // 快速关闭当前已打开的编辑器
   {
     "key": "cmd+w w",
@@ -155,14 +153,12 @@
     "key": "cmd+k u",
     "command": "-workbench.action.closeUnmodifiedEditors"
   },
-
   // 禁用打开外部终端
   {
     "key": "shift+cmd+c",
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
   },
-
   // git 相关 - 在 git 面板打开情况下触发相关的快捷操作
   {
     "key": "cmd+g g",
@@ -175,29 +171,33 @@
   },
   {
     "key": "cmd+g a",
-    "command": "git.commitAll",
+    "command": "git.commitAll"
   },
   {
     "key": "cmd+g shift+p",
-    "command": "git.push",
+    "command": "git.push"
   },
   {
     "key": "cmd+g m",
-    "command": "git.merge",
+    "command": "git.merge"
   },
   {
     "key": "cmd+g ctrl+p",
-    "command": "git.pushForce",
+    "command": "git.pushForce"
   },
   {
     "key": "cmd+g f",
-    "command": "git.pull",
+    "command": "git.pull"
   },
   {
     "key": "cmd+g s",
-    "command": "git.stash",
+    "command": "git.stash"
   },
-
+  {
+    "key": "cmd+g b",
+    "command": "git.checkout",
+    "when": "!operationInProgress"
+  },
   // console.log
   {
     "key": "shift+alt+c",
@@ -280,7 +280,6 @@
     "command": "-editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly"
   },
-
   // 工作区禁用格式化快捷键
   {
     "key": "shift+alt+f",
@@ -292,7 +291,6 @@
     "command": "-editor.action.formatDocument",
     "when": "config.workspaceKeybindings.editorFormatter.disabled"
   },
-
   // 调整编辑器宽度
   {
     "key": "ctrl+cmd+left",
@@ -302,18 +300,16 @@
     "key": "ctrl+cmd+right",
     "command": "workbench.action.decreaseViewWidth"
   },
-
   // 聚焦到编辑器
   {
     "key": "ctrl+f",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "!editorTextFocus"
   },
-
   // 聚焦到资源管理器
   {
     "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
+    "command": "workbench.action.focusSideBar"
   },
   {
     "key": "ctrl+h",
@@ -325,7 +321,6 @@
     "command": "-deleteAllRight",
     "when": "textInputFocus && !editorReadonly"
   },
-
   // 资源管理器常用操作
   {
     "key": "f2",
@@ -357,7 +352,6 @@
     "command": "explorer.newFolder",
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
-
   // 编码相关
   {
     "key": "cmd+enter",
@@ -379,46 +373,205 @@
     "command": "-editor.action.showHover",
     "when": "editorTextFocus"
   },
+  // 代码快速转换
   {
-    "key": "ctrl+cmd+b",
-    "command": "workbench.action.tasks.build",
-    "when": "taskCommandsRegistered"
+    "key": "alt+t",
+    "command": "workbench.action.quickOpen",
+    "args": ">transform",
+    "when": "editorTextFocus && !editorReadonly && !inQuickOpen"
   },
   {
-    "key": "shift+cmd+b",
-    "command": "-workbench.action.tasks.build",
-    "when": "taskCommandsRegistered"
+    "key": "alt+b",
+    "command": "extension.toggleBool",
+    "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "alt+cmd+k",
-    "command": "-bookmarks.toggle",
+    "key": "alt+b",
+    "command": "-extension.toggleBool",
     "when": "editorTextFocus"
   },
-
-  // 括号跳转
+  // VSpaceCode
   {
-    "key": "shift+cmd+9",
-    "command": "editor.action.jumpToBracket",
-    "when": "editorTextFocus"
+    "key": "space",
+    "command": "vspacecode.space",
+    "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
   },
   {
-    "key": "shift+cmd+\\",
-    "command": "-editor.action.jumpToBracket",
-    "when": "editorTextFocus"
+    "key": "space",
+    "command": "vspacecode.space",
+    "when": "sideBarFocus && !inputFocus && !whichkeyActive"
   },
   {
-    "key": "shift+cmd+0",
-    "command": "editor.action.jumpToBracket",
-    "when": "editorTextFocus"
-  },
-
-  // 分屏
-  {
-    "key": "cmd+\\",
-    "command": "workbench.action.splitEditor"
+    "key": "tab",
+    "command": "extension.vim_tab",
+    "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert' && editorLangId != 'magit'"
   },
   {
-    "key": "shift+cmd+\\",
-    "command": "workbench.action.splitEditorDown"
+    "key": "tab",
+    "command": "-extension.vim_tab",
+    "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "x",
+    "command": "magit.discard-at-point",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "k",
+    "command": "-magit.discard-at-point"
+  },
+  {
+    "key": "-",
+    "command": "magit.reverse-at-point",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "v",
+    "command": "-magit.reverse-at-point"
+  },
+  {
+    "key": "shift+-",
+    "command": "magit.reverting",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "shift+v",
+    "command": "-magit.reverting"
+  },
+  {
+    "key": "shift+o",
+    "command": "magit.resetting",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "shift+x",
+    "command": "-magit.resetting"
+  },
+  {
+    "key": "x",
+    "command": "-magit.reset-mixed"
+  },
+  {
+    "key": "ctrl+u x",
+    "command": "-magit.reset-hard"
+  },
+  {
+    "key": "y",
+    "command": "-magit.show-refs"
+  },
+  {
+    "key": "y",
+    "command": "vspacecode.showMagitRefMenu",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode == 'Normal'"
+  },
+  {
+    "key": "g",
+    "command": "-magit.refresh",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "g",
+    "command": "vspacecode.showMagitRefreshMenu",
+    "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "acceptSelectedSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "showNextParameterHint",
+    "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "showPrevParameterHint",
+    "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "acceptSelectedCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "file-browser.stepOut",
+    "when": "inFileBrowser"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "file-browser.stepIn",
+    "when": "inFileBrowser"
+  },
+  {
+    "key": "cmd+s",
+    "command": "runCommands",
+    "args": {
+      "commands": ["workbench.action.files.save", "extension.vim_escape"]
+    },
+    "when": "vim.mode != 'Normal'"
+  },
+  {
+    "key": "escape",
+    "command": "closeFindWidget",
+    "when": "vim.mode == 'Normal' && editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "cmd+k shift+s",
+    "command": "workbench.action.openGlobalKeybindingsFile"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-editor.action.joinLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-workbench.action.switchWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
   }
 ]
