@@ -1,5 +1,9 @@
+/**
+ * VSCode 界面样式优化精简
+ * @usage 使用方式：复制粘贴到全局的 settings.json 文件中
+ * @dependencies 需要安装插件：Custom UI Style、VScode Animations
+ */
 {
-  // 需要安装插件：Custom UI Style、VScode Animations
   "animations.Active": "Indent",
   "animations.CursorAnimation": true,
   "animations.Default-Duration": 100,

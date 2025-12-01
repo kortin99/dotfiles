@@ -1,3 +1,8 @@
+/**
+ * VSCode Vim 相关配置和快捷键
+ * @usage 使用方式：复制粘贴到全局的 settings.json 文件中
+ * @dependencies 需要安装插件：Vim（或直接安装 Kortin Vim Pack），另需通过 brew install im-select 安装用于切换输入法的工具
+ */
 {
   "vim.leader": " ",
   "vim.useCtrlKeys": false,
