@@ -13,15 +13,16 @@ case $1 in
         bash "$CURR_DIR/_scripts/backup.sh"
         ;;
     setup)
-        bash "$CURR_DIR/_scripts/setup.sh"
+        bash "$CURR_DIR/_scripts/setup.sh" "${@:2}"
         ;;
     *)
         echo "Usage:"
         echo "  $ $0 {backup|setup}"
         echo ""
         echo "Commands:"
-        echo "  backup   Copy the environment config files to current dotfiles project."
-        echo "  setup    Apply current dotfiles to the environment."
+        echo "  backup      Copy the environment config files to current dotfiles project."
+        echo "  setup       Apply current dotfiles to the environment."
+        echo "    --skip    Apply current dotfiles to the environment, skip overwriting existing files."
         exit 1
         ;;
 esac

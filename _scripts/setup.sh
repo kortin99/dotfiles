@@ -7,6 +7,17 @@ source "$SCRIPT_DIR/../config.sh"
 # 使用绝对路径确保路径正确
 DOTFILES_DIR=$(realpath "$(dirname "$SCRIPT_DIR")")
 
+# 解析参数
+SKIP_EXISTING=false
+for arg in "$@"; do
+    case $arg in
+        --skip)
+        SKIP_EXISTING=true
+        shift # Remove --skip from processing
+        ;;
+    esac
+done
+
 # 函数：创建符号链接
 create_symlink() {
     local src=$1
@@ -35,6 +46,12 @@ create_symlink() {
 
     if [ -e "$dst" ] || [ -L "$dst" ]; then  # 检查文件存在或是符号链接
         echo -e "\n目标 $dst 已存在。"
+
+        if [ "$SKIP_EXISTING" = true ]; then
+            echo -e "已跳过 (--skip)。\n"
+            return
+        fi
+
         read -p "是否要覆盖？(y/N): " OVERRIDE
 
         if [[ ! $OVERRIDE =~ ^[Yy]$ ]]; then
