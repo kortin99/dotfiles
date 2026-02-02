@@ -82,7 +82,7 @@ ZSH_CUSTOM="$ZSH/custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  # git
   git-commit
   sudo
   command-not-found
@@ -392,7 +392,6 @@ export VOLTA_HOME="$XDG_CONFIG_HOME/volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export VOLTA_FEATURE_PNPM=1
 
-
 # npm XDG 目录配置
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
@@ -403,14 +402,14 @@ export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 
 # pnpm 环境变量
-export PNPM_HOME="/Users/kortin/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 # bun completions
-[ -s "/Users/kortin/.bun/_bun" ] && source "/Users/kortin/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -451,10 +450,10 @@ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 # export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin
 # export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
-export PATH=$PATH:/Users/kortin/.local/share/cargo/bin
+export PATH=$PATH:$HOME/.local/share/cargo/bin
 
 # Android Studio
-# /Users/kortin/Library/Android/sdk
+# $HOME/Library/Android/sdk
 
 # python XDG
 export PYTHON_HISTORY="$XDG_CACHE_HOME/python/history"
@@ -554,7 +553,10 @@ source /opt/homebrew/share/fzf-tab/fzf-tab.plugin.zsh
 export PATH="$HOME/.icafe/bin:$PATH"
 
 # Added by Comate
-export PATH="/Users/kortin/.comate/bin:$PATH"
+export PATH="$HOME/.comate/bin:$PATH"
 
 # Added by DuCC (symlink)
-export PATH="/Users/kortin/.comate/baidu-cc/bin:$PATH"
+export PATH="$HOME/.comate/baidu-cc/bin:$PATH"
+
+# 自动切换输入法
+/opt/homebrew/bin/im-select com.apple.keylayout.ABC
