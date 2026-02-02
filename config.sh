@@ -7,6 +7,7 @@ CONFIGS=(
     "karabiner                     ~/.config/karabiner"
     "sketchybar                    ~/.config/sketchybar"
     "lazygit                       ~/.config/lazygit"
+    "zsh                           ~/.config/zsh"
     "zsh/.zshrc                    ~/.zshrc"
     "git/.gitconfig                ~/.gitconfig"
     "hammerspoon                   ~/.hammerspoon"
