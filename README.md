@@ -140,6 +140,9 @@ chmod +x ./install.sh
 
 复制你所需的配置部分到对应的配置文件即可
 
+### 关于 Brewfile
+`Brewfile` 是通过 `Brew bundle dump` 生成出的 Homebrew 依赖描述文件，可配合 `Brew bundle` 命令恢复和迁移 macOS 上的软件环境。
+
 ## License
 
 This project is licensed under the GPL License - see the [LICENSE](LICENSE) file for details.
