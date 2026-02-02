@@ -145,7 +145,7 @@ ABBR_QUIETER=1
 ABBR_FORCE=1
 source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
 
-abbr gti="git" # allow mistick type `git` as `gti`
+abbr gti="git" # allow mistake type `git` as `gti`
 abbr finder="open -a QSpace\ Pro"
 abbr p="ps -f"
 abbr cp="cp -i"

@@ -7,10 +7,11 @@ CONFIGS=(
     "karabiner                     ~/.config/karabiner"
     "sketchybar                    ~/.config/sketchybar"
     "lazygit                       ~/.config/lazygit"
+    "fish                          ~/.config/fish"
     "zsh                           ~/.config/zsh"
     "zsh/.zshrc                    ~/.zshrc"
     "git/.gitconfig                ~/.gitconfig"
     "hammerspoon                   ~/.hammerspoon"
     "starship/starship.toml        ~/.config/starship.toml"
-    "surfingkeys/surfingkeys.js   ~/.surfingkeys.js"
+    "surfingkeys/surfingkeys.js    ~/.surfingkeys.js"
 )
