@@ -3,5 +3,5 @@ raycast/extensions
 iterm2/AppSupport/SavedState
 iterm2/sockets
 lazygit/state.yml
-zsh/keys.zsh
+SECRET_KEYS.sh
 .DS_Store

@@ -103,8 +103,8 @@ source /opt/homebrew/share/fzf-tab/fzf-tab.plugin.zsh
 # You may need to manually set your language environment
 export LANG=zh_CN.UTF-8
 
-if [ -f "$HOME/keys.zsh" ]; then
-  source "$HOME/keys.zsh"
+if [ -f "$HOME/SECRET_KEYS.sh" ]; then
+  source "$HOME/SECRET_KEYS.sh"
 fi
 
 # 默认编辑器
@@ -115,16 +115,6 @@ else
   # export EDITOR='trae'
   export EDITOR='code'
 fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
 
 # quick config setup
 alias lg="lazygit"
@@ -314,11 +304,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # fzf
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
-# x-cmd
-
-# bitwarden cli
-export BW_SESSION="XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
 
 # tldr 命令行 cheatsheet 工具
 export TLDR_LANGUAGE="zh"

@@ -14,4 +14,5 @@ CONFIGS=(
     "hammerspoon                   ~/.hammerspoon"
     "starship/starship.toml        ~/.config/starship.toml"
     "surfingkeys/surfingkeys.js    ~/.surfingkeys.js"
+    "SECRET_KEYS.sh                ~/.config/SECRET_KEYS.sh"
 )

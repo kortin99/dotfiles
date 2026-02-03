@@ -1,3 +1,5 @@
+set -g fish_greeting ""
+
 # PATH Configuration
 fish_add_path "$HOME/.local/bin"
 
@@ -60,9 +62,6 @@ set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
 set -gx HOMEBREW_BOTTLE_DOMAIN http://mirrors.aliyun.com/homebrew/homebrew-bottles
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
-# Bitwarden
-set -gx BW_SESSION "XUg4i0hlxunEVrd3Xq0nzbTmHfF2tznJebSIsf2RUkVgDTEfPJZPpKeSLiKlZlJp69A9XY9kDb2jHImuE5CO2w=="
-
 # TLDR
 set -gx TLDR_LANGUAGE "zh"
 
@@ -115,9 +114,9 @@ if type -q thefuck
 end
 
 # Starship (uncomment if installed)
-# if type -q starship
-#     starship init fish | source
-# end
+if type -q starship
+    starship init fish | source
+end
 
 # iTerm2 Integration
 if test -e "$HOME/.iterm2_shell_integration.fish"
@@ -133,6 +132,6 @@ if type -q im-select
 end
 
 # Load custom keys if exists
-if test -f "$HOME/keys.fish"
-    source "$HOME/keys.fish"
+if test -f "$HOME/SECRET_KEYS.sh"
+    source "$HOME/.SECRET_KEYS.sh"
 end
