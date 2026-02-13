@@ -121,4 +121,4 @@
 [includeIf "gitdir:/Users/kortin/WorkSpace/baidu/"]
 	path = /Users/kortin/WorkSpace/baidu/.gitconfig
 [oh-my-zsh]
-	git-commit-alias = beadd56dd75e8a40fe0a7d4a5d63ed5bf9efcd48
+	git-commit-alias = d1c04d8a33f9127d03b69617c5367db5ceebc8a7

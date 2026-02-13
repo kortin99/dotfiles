@@ -10,6 +10,8 @@ set -gx XDG_CACHE_HOME "$HOME/.cache"
 set -gx XDG_STATE_HOME "$HOME/.local/state"
 set -gx XDG_RUNTIME_DIR "$HOME/.local/runtime/"(id -u)
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Default Editor
 if test -n "$SSH_CONNECTION"
     set -gx EDITOR 'vim'
@@ -77,6 +79,7 @@ alias cao "fuck"
 alias "@ai" "ask"
 alias git-rls "git-release"
 alias git-mr "git-merge"
+alias claw "openclaw"
 
 # Abbrs
 if status is-interactive
