@@ -13,15 +13,19 @@
   "vim.autoSwitchInputMethod.enable": true,
   "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
   "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
+  "vim.changeWordIncludesWhitespace": true,
   "vim.camelCaseMotion.enable": true,
   "vim.easymotion": true,
   "vim.enableNeovim": true,
+  "vim.highlightedyank.enable": true,
+  "vim.sneak": true,
+  "vim.sneakReplacesF": true,
+  "vim.easymotionIncSearchForegroundColor": "#FF875F",
   "vim.handleKeys": {
     "<C-d>": true,
     "<C-s>": false,
     "<C-z>": false
   },
-  "vim.highlightedyank.enable": true,
   "vim.insertModeKeyBindingsNonRecursive": [
     {
       "after": ["<Esc>"],
@@ -94,6 +98,23 @@
       "before": ["<leader>", "f"],
       "commands": ["fuzzySearch.activeTextEditorWithCurrentSelection"]
     },
+    {
+      "before": ["<leader>", "/"],
+      "after": ["<leader>", "<leader>", "/"]
+    },
+    // 书签
+    {
+        "before": ["<leader>", "m", "m"],
+        "commands": ["bookmarks.toggle"]
+    },
+    {
+        "before": ["<leader>", "m", "b"],
+        "commands": ["bookmarks.list"]
+    },
+    {
+        "before": ["<leader>", "m", "l"],
+        "commands": [":marks"]
+    },
     // redo
     {
       "after": ["C-r"],
@@ -101,11 +122,11 @@
     },
     // 跳转到问题
     {
-      "before": ["g", "["],
+      "before": ["g", "{"],
       "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": ["g", "]"],
+      "before": ["g", "}"],
       "commands": ["editor.action.marker.next"]
     }
     // {
