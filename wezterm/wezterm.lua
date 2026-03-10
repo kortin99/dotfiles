@@ -13,7 +13,7 @@ local tab_bar_color = "#171d21"
 local config = {
 
 	-- font
-	font_size = 14,
+	font_size = 15,
 	line_height = 1.35,
 	font = wezterm.font_with_fallback({
 		{
@@ -128,7 +128,7 @@ local config = {
 -- 超链接规则配置
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 table.insert(config.hyperlink_rules, {
-	regex = 'http://localhost:3000',
+	regex = "http://localhost:3000",
 	format = "$1",
 })
 

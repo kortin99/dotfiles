@@ -101,6 +101,7 @@ if status is-interactive
     abbr -a yabaiconfig "$EDITOR ~/.config/yabai"
     abbr -a myip "ipconfig getifaddr en0"
     abbr -a gcm --set-cursor 'git commit -m "%"'
+    abbr -a uva "source .venv/bin/activate.fish"
 end
 
 # Tools Initialization
@@ -138,3 +139,7 @@ end
 if test -f "$HOME/SECRET_KEYS.sh"
     source "$HOME/.SECRET_KEYS.sh"
 end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

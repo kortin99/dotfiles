@@ -126,6 +126,7 @@ alias ls="eza --git --icons --color=always --group-directories-first"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/.tmux.conf"
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias cao="fuck"
+alias uva="source .venv/bin/activate"
 alias "@ai"="ask"
 
 # zsh-abbr
