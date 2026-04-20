@@ -6,8 +6,9 @@
 #  |_|\__,_/___|\__, |\__, |_|\__|
 #                __/ | __/ |
 #               |___/ |___/
-
+fontFamily: "SF Symbols"
 gui:
+  showIcons: true
   showRandomTip: false
   showBottomLine: false
   nerdFontsVersion: '3'
@@ -16,6 +17,9 @@ git:
   log:
     showGraph: 'always'
   parseEmoji: true
+  pagers:
+    - pager: delta --dark --paging=never
+      useConfig: false
 customCommands:
   - key: 'C'
     command: 'clear && git cz c'
@@ -43,52 +47,52 @@ customCommands:
     prompts:
       - type: 'menu'
         key: 'Type'
-        title: 'Select the type of change you are committing'
+        title: '选择您要提交的更改类型'
         options:
           - name: 'fix'
-            description: 'A bug fix. Correlates with PATCH in SemVer'
+            description: '错误修复。与语义版本控制中的PATCH相关'
             value: 'fix'
           - name: 'feat'
-            description: 'A new feature. Correlates with MINOR in SemVer'
+            description: '新功能。与语义版本控制中的次版本MINOR相关'
             value: 'feat'
           - name: 'docs'
-            description: 'Documentation only changes'
+            description: '仅文档变更'
             value: 'docs'
           - name: 'style'
-            description: 'Changes that do not affect the meaning of the code'
+            description: '不影响代码逻辑的更改'
             value: 'style'
           - name: 'refactor'
-            description: 'A code change that neither fixes a bug nor adds a feature'
+            description: '重构。既不修复错误也不添加功能的代码更改'
             value: 'refactor'
           - name: 'perf'
-            description: 'A code change that improves performance'
+            description: '提高性能的代码更改'
             value: 'perf'
           - name: 'test'
-            description: 'Adding missing tests or correcting existing tests'
+            description: '测试。添加缺失的测试或纠正现有的测试'
             value: 'test'
           - name: 'build'
-            description: 'Changes that affect the build system or external dependencies'
+            description: '影响构建系统或外部依赖关系的更改'
             value: 'build'
           - name: 'ci'
-            description: 'Changes to CI configuration files and scripts'
+            description: 'CI配置文件和脚本的更改'
             value: 'ci'
           - name: 'chore'
-            description: "Other changes that don't modify src or test files"
+            description: "其他不修改src或测试文件的更改"
             value: 'chore'
           - name: 'revert'
-            description: 'Reverts a previous commit'
+            description: '撤销还原之前的提交'
             value: 'revert'
       - type: 'input'
-        title: 'What is the scope of this change? (optional)'
+        title: '影响范围? (可选)'
         key: 'Scope'
         initialValue: ''
       - type: 'input'
-        title: 'Write a short and imperative summary of the code changes'
+        title: '撰写代码更改的简要说明'
         key: 'Message'
         initialValue: ''
       - type: 'menu'
         key: 'Breaking'
-        title: 'Is this a BREAKING CHANGE? Correlates with MAJOR in SemVer'
+        title: '这是否是一个破坏性更新（BREAKING CHANGE）？与语义版本控制中的主要版本相关'
         options:
           - name: 'no'
             value: ''
@@ -97,4 +101,4 @@ customCommands:
       - type: 'confirm'
         key: 'Confirm'
         title: 'Commit'
-        body: 'Are you sure you want to commit?'
+        body: '确认进行提交?'

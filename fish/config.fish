@@ -80,6 +80,7 @@ alias "@ai" "ask"
 alias git-rls "git-release"
 alias git-mr "git-merge"
 alias claw "openclaw"
+alias git-set-kortin "git config user.name \"kortin.zhou\" && git config user.email \"hi.kortin.cn\""
 
 # Abbrs
 if status is-interactive
